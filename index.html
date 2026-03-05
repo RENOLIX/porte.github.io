@@ -1,0 +1,839 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="metaTitle">Malek Automatisme | Rideaux & Portails Électriques</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* THÈME BLANC & ORANGE UNIQUEMENT */
+      --primary: #f97316;       /* Orange Vif */
+      --primary-dark: #c2410c;  /* Orange Foncé au survol */
+      --text-dark: #111827;     /* Noir doux pour le texte */
+      --text-grey: #4b5563;     /* Gris pour les descriptions */
+      --bg-white: #ffffff;
+      --bg-light: #fff7ed;      /* Fond très léger orange */
+      --bg-orange-soft: #ffedd5; /* Orange très clair pour Contact/Footer */
+      --border: #e5e7eb;
+      --radius: 8px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      font-family: 'Manrope', 'Cairo', sans-serif;
+      background: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: 70px;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; transition: 0.2s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    
+    /* ICONES SVG */
+    .icon { width: 20px; height: 20px; fill: currentColor; vertical-align: middle; }
+    .icon-lg { width: 28px; height: 28px; }
+
+    /* TYPO */
+    h1, h2, h3, h4 { color: var(--text-dark); margin: 0; font-weight: 800; }
+    h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin-bottom: 1rem; }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); margin-bottom: 1rem; }
+    p { margin-bottom: 1.5rem; color: var(--text-grey); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* BOUTONS */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 0.8rem 1.6rem; font-weight: 700; border-radius: var(--radius);
+      border: none; cursor: pointer; transition: 0.2s; font-size: 0.95rem;
+    }
+    .btn-orange { background: var(--primary); color: white; }
+    .btn-orange:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    /* HEADER */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 0;
+      backdrop-filter: blur(8px);
+      height: 70px; display: flex; align-items: center;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    
+    .logo { font-size: 1.4rem; font-weight: 900; color: var(--text-dark); text-transform: uppercase; display: flex; align-items: center; gap: 5px; }
+    .logo span { color: var(--primary); }
+
+    .nav-right { display: flex; gap: 1rem; align-items: center; }
+    
+    /* Lang Switcher */
+    .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .lang-btn { background: white; border: none; padding: 5px 10px; font-weight: 700; cursor: pointer; font-size: 0.8rem; }
+    .lang-btn.active { background: var(--primary); color: white; }
+
+    /* HERO */
+    .hero { padding: 4rem 0; background: var(--bg-white); text-align: center; }
+    .hero-badges { display: flex; justify-content: center; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .badge { background: var(--bg-light); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; border: 1px solid var(--primary); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-img { position: relative; }
+    .hero-img img { width: 100%; border-radius: var(--radius); box-shadow: 20px 20px 0 var(--bg-light); }
+    
+    /* Overlay Hero Mobile Uniquement */
+    .hero-mobile-overlay { display: none; }
+
+    /* QUI SOMMES NOUS */
+    .about-section { padding: 4rem 0; background: var(--bg-light); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .about-img img { 
+      width: 100%; 
+      max-width: 400px;
+      margin: 0 auto; 
+      border-radius: var(--radius);
+      box-shadow: 10px 10px 0 var(--primary);
+    }
+    .check-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; font-weight: 600; }
+    .check-list span { color: var(--primary); font-weight: 900; }
+
+    /* CATALOGUE */
+    .catalog-section { padding: 4rem 0; }
+    .cat-block { margin-bottom: 4rem; }
+    .cat-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
+    .cat-title h3 { font-size: 1.6rem; color: var(--text-dark); }
+    .cat-title small { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+    .slider-wrap { position: relative; }
+    .slider {
+      display: flex; gap: 1.5rem; overflow-x: auto; scroll-behavior: smooth;
+      padding: 1rem 0.5rem 2rem; scrollbar-width: none;
+    }
+    .slider::-webkit-scrollbar { display: none; }
+
+    /* CARTE PRODUIT (Sans bouton) */
+    .card {
+      min-width: 260px; max-width: 260px;
+      background: white; border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: 0.3s;
+      display: flex; flex-direction: column;
+      cursor: pointer; /* Indique cliquable */
+    }
+    /* Lien englobant toute la carte */
+    .card-link { display: contents; color: inherit; } 
+
+    .card:hover { border-color: var(--primary); box-shadow: 0 10px 20px rgba(249, 115, 22, 0.15); transform: translateY(-5px); }
+    .card-img { height: 180px; object-fit: cover; background: #eee; }
+    .card-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; }
+    .card h4 { font-size: 1.1rem; margin-bottom: 0.8rem; font-weight: 700; }
+    .card p { 
+      font-size: 0.9rem; margin-bottom: 0; color: var(--text-grey); 
+      line-height: 1.5;
+    }
+
+    /* Navigation Arrows */
+    .nav-arrow {
+      position: absolute; top: 40%; transform: translateY(-50%);
+      width: 40px; height: 40px; background: white; border: 1px solid var(--border);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 2; font-weight: bold;
+    }
+    .nav-arrow:hover { background: var(--primary); color: white; border-color: var(--primary); }
+    .prev { left: -15px; }
+    .next { right: -15px; }
+
+    /* DEVIS */
+    .quote-section { padding: 5rem 0 2rem; background: var(--bg-white); }
+    .quote-container { 
+      max-width: 800px; margin: 0 auto; 
+      background: white; border: 2px solid var(--border); 
+      border-radius: var(--radius); padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-weight: 700; margin-bottom: 0.4rem; font-size: 0.9rem; }
+    .form-control { 
+      width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 6px; 
+      font-family: inherit; transition: 0.3s;
+    }
+    .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1); }
+
+    /* VAGUE de séparation */
+    .wave-divider {
+      display: block; width: 100%; height: 60px;
+      fill: var(--bg-orange-soft);
+      margin-bottom: -1px;
+    }
+
+    /* CONTACT */
+    .contact-section { 
+      padding: 2rem 0 4rem; 
+      background: var(--bg-orange-soft); 
+      color: var(--text-dark); 
+    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; }
+    .contact-text h2 { color: var(--primary); margin-bottom: 1.5rem; }
+    .contact-text p { color: var(--text-grey); margin-bottom: 2.5rem; }
+    
+    .info-row { display: flex; gap: 1.5rem; margin-bottom: 2rem; align-items: flex-start; }
+    .info-icon-box { 
+      width: 48px; height: 48px; background: white; 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      color: var(--primary); box-shadow: 0 2px 10px rgba(0,0,0,0.05); flex-shrink: 0;
+    }
+    .map { width: 100%; height: 400px; border-radius: var(--radius); border: 2px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+    /* FOOTER */
+    footer { 
+      background: var(--bg-orange-soft); 
+      color: var(--text-grey); 
+      padding: 3rem 0; 
+      font-size: 0.95rem; 
+    }
+    /* Ligne blanche épaisse */
+    .footer-divider {
+      max-width: 1200px; margin: 0 auto 3rem; 
+      border-top: 3px solid white; 
+      opacity: 0.8;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-col h4 { color: var(--text-dark); margin-bottom: 1.2rem; font-size: 1.1rem; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.8rem; }
+    .footer-col a:hover { color: var(--primary); padding-left: 5px; }
+
+    /* Burger & Mobile Menu Overlay */
+    .burger { display: none; background: none; border: none; cursor: pointer; color: var(--text-dark); }
+    .mobile-menu-overlay {
+      position: fixed; top: 70px; left: 0; right: 0; background: white;
+      border-bottom: 1px solid var(--border); padding: 1rem;
+      display: none; flex-direction: column; gap: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    .mobile-menu-overlay.open { display: flex; }
+    .mobile-menu-overlay a { font-weight: 700; padding: 0.5rem 0; border-bottom: 1px solid #f1f5f9; }
+
+    /* RTL */
+    body.rtl { direction: rtl; text-align: right; }
+    body.rtl .prev { right: -15px; left: auto; transform: translateY(-50%) rotate(180deg); }
+    body.rtl .next { left: -15px; right: auto; transform: translateY(-50%) rotate(180deg); }
+    body.rtl .check-list li { flex-direction: row; }
+    body.rtl .footer-col a:hover { padding-left: 0; padding-right: 5px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .btn-header { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+      .about-grid, .contact-grid, .form-grid, .hero-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-arrow { display: none; } 
+      .cat-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+      .about-img img { max-width: 100%; }
+
+      /* Mobile Navbar */
+      .nav-menu { display: none; }
+      .burger { display: block; }
+      .btn-quote-header { display: none; }
+
+      /* HERO MOBILE SPECIFIC */
+      .hero { padding: 0; text-align: left; }
+      
+      /* IMPORTANT: On cache explicitement le contenu PC sur mobile */
+      .hero-content, .hero-img { display: none; }
+      
+      /* On affiche le contenu Mobile */
+      .hero-mobile-container {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        display: block;
+      }
+      .hero-mobile-bg {
+        width: 100%; height: 100%; object-fit: cover;
+        filter: brightness(0.6);
+      }
+      
+      /* Texte remonté sur Mobile (bottom passé de 2rem à 40%) */
+      .hero-mobile-text {
+        position: absolute;
+        top: 45%; left: 50%; transform: translate(-50%, -50%); /* Centré et remonté */
+        width: 90%;
+        color: white; z-index: 10;
+        text-align: center;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      }
+      .hero-mobile-text h1 { color: white; font-size: 2rem; margin-bottom: 0.8rem; line-height: 1.2; }
+      .hero-mobile-text p { color: rgba(255,255,255,0.95); margin-bottom: 1.8rem; font-size: 1rem; }
+    }
+
+    @media (min-width: 901px) {
+      .hero-mobile-container { display: none; }
+      .nav-menu { display: flex; gap: 2rem; }
+      .nav-menu a { font-weight: 600; font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="logo">MALEK<span>AUTO</span></a>
+    
+    <!-- Desktop Menu -->
+    <div class="nav-menu">
+      <a href="#catalogue" data-i18n="navCat">Catalogue</a>
+      <a href="#about" data-i18n="navAbout">Entreprise</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+    </div>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('fr')" id="btnFr">FR</button>
+        <button class="lang-btn" onclick="setLang('ar')" id="btnAr">AR</button>
+      </div>
+      <a href="#devis" class="btn btn-orange btn-quote-header" data-i18n="btnQuote">Devis Gratuit</a>
+      
+      <button class="burger" onclick="toggleMenu()">
+        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <a href="#catalogue" onclick="toggleMenu()" data-i18n="navCat">Catalogue</a>
+  <a href="#about" onclick="toggleMenu()" data-i18n="navAbout">Entreprise</a>
+  <a href="#contact" onclick="toggleMenu()" data-i18n="navContact">Contact</a>
+  <a href="#devis" onclick="toggleMenu()" style="color:var(--primary);" data-i18n="btnQuote">Devis Gratuit</a>
+</div>
+
+<!-- HERO DESKTOP (Normal) -->
+<section class="hero hero-desktop">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="hero-badges">
+        <div class="badge" data-i18n="badge1">Depuis 2016</div>
+        <div class="badge" data-i18n="badge2">Intervention Rapide</div>
+      </div>
+      <h1 data-i18n="heroTitle">Expert Rideaux Métalliques<br>& Portails Électriques</h1>
+      <p data-i18n="heroDesc">Installation professionnelle et réparation pour particuliers et industriels.</p>
+      <div style="display:flex; justify-content:center; gap:10px;">
+        <a href="#catalogue" class="btn btn-orange" data-i18n="btnCat">Nos Produits</a>
+        <a href="#contact" class="btn btn-outline" data-i18n="btnContact">Nous Trouver</a>
+      </div>
+    </div>
+    <!-- Desktop Hero Image -->
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=1000&auto=format&fit=crop" alt="Portail">
+    </div>
+  </div>
+  
+  <!-- HERO MOBILE (Texte REMONTÉ) -->
+  <div class="hero-mobile-container">
+    <img src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=800&auto=format&fit=crop" class="hero-mobile-bg" alt="Portail Mobile">
+    <div class="hero-mobile-text">
+      <h1 data-i18n="heroTitle">Expert Rideaux Métalliques<br>& Portails Électriques</h1>
+      <p data-i18n="heroDesc">Installation professionnelle et réparation pour particuliers et industriels.</p>
+      <a href="#catalogue" class="btn btn-orange" data-i18n="btnCat">Nos Produits</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUI SOMMES NOUS -->
+<section class="about-section" id="about">
+  <div class="container about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600&auto=format&fit=crop" alt="Technicien">
+    </div>
+    <div>
+      <h2 data-i18n="aboutTitle">Qui sommes-nous ?</h2>
+      <p data-i18n="aboutText">Fondée en 2016, Malek Automatisme est votre partenaire de confiance pour la sécurisation de vos accès. Nous combinons savoir-faire artisanal et technologie moderne.</p>
+      <ul class="check-list">
+        <li><span>✓</span> <span data-i18n="check1">Équipe qualifiée</span></li>
+        <li><span>✓</span> <span data-i18n="check2">Dépannage Urgence</span></li>
+        <li><span>✓</span> <span data-i18n="check3">Garantie matériel</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGUE (Produits avec + de texte) -->
+<section id="catalogue" class="catalog-section">
+  <div class="container">
+    
+    <!-- Catégorie 1: Portails & Rideaux -->
+    <div class="cat-block">
+      <div class="cat-header">
+        <div class="cat-title">
+          <small data-i18n="cat1Sub">Fermetures</small>
+          <h3 data-i18n="cat1Title">Portails & Rideaux</h3>
+        </div>
+      </div>
+      <div class="slider-wrap">
+        <button class="nav-arrow prev" onclick="slide('track1', -1)">&#10094;</button>
+        <div class="slider" id="track1">
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1599818820476-d477813a216c?q=80&w=400" class="card-img" alt="Rapide">
+              <div class="card-body">
+                <h4 data-i18n="p1">Rideau Rapide</h4>
+                <p data-i18n="d1">Idéal pour les zones industrielles à fort trafic. Ouverture ultra-rapide et robuste.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1628624747186-a941c72bb6e1?q=80&w=400" class="card-img" alt="Metal">
+              <div class="card-body">
+                <h4 data-i18n="p2">Rideau Métallique</h4>
+                <p data-i18n="d2">Sécurité maximale pour commerces et entrepôts. Lames pleines ou micro-perforées.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1615876063860-d971f6dca5dc?q=80&w=400" class="card-img" alt="Battant">
+              <div class="card-body">
+                <h4 data-i18n="p3">Portail Battant</h4>
+                <p data-i18n="d3">Style classique avec motorisation moderne. Idéal pour les entrées résidentielles.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1615876234918-9c5952f4c66e?q=80&w=400" class="card-img" alt="Coulissant">
+              <div class="card-body">
+                <h4 data-i18n="p4">Portail Coulissant</h4>
+                <p data-i18n="d4">Solution gain de place par excellence. Parfait pour les terrains en pente.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=400" class="card-img" alt="Garage">
+              <div class="card-body">
+                <h4 data-i18n="p5">Porte Sectionnelle</h4>
+                <p data-i18n="d5">Isolation thermique et sécurité pour votre garage. Design moderne et silencieux.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button class="nav-arrow next" onclick="slide('track1', 1)">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Catégorie 2: Accessoires -->
+    <div class="cat-block">
+      <div class="cat-header">
+        <div class="cat-title">
+          <small data-i18n="cat2Sub">Automatisme</small>
+          <h3 data-i18n="cat2Title">Accessoires & Barrières</h3>
+        </div>
+      </div>
+      <div class="slider-wrap">
+        <button class="nav-arrow prev" onclick="slide('track2', -1)">&#10094;</button>
+        <div class="slider" id="track2">
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=400" class="card-img" alt="Acc">
+              <div class="card-body">
+                <h4 data-i18n="p6">Accessoire Automatisme</h4>
+                <p data-i18n="d6">Large gamme de pièces de rechange et composants pour tous vos systèmes.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://plus.unsplash.com/premium_photo-1661963074092-23c34796329c?q=80&w=400" class="card-img" alt="Moteur">
+              <div class="card-body">
+                <h4 data-i18n="p7">Accessoire Automatisme</h4>
+                <p data-i18n="d7">Moteurs puissants et durables pour portails lourds et usage intensif.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1575003666023-7ebf998f8287?q=80&w=400" class="card-img" alt="Barriere">
+              <div class="card-body">
+                <h4 data-i18n="p8">Barrière Levante</h4>
+                <p data-i18n="d8">Contrôle d'accès efficace pour parkings et résidences privées.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1565514020125-63b7593c2807?q=80&w=400" class="card-img" alt="Motorline">
+              <div class="card-body">
+                <h4 data-i18n="p9">Barrière Motorline</h4>
+                <p data-i18n="d9">La référence professionnelle en matière de barrières automatiques rapides.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1550041473-d296a3a8a18a?q=80&w=400" class="card-img" alt="Acc">
+              <div class="card-body">
+                <h4 data-i18n="p10">Accessoire Automatisme</h4>
+                <p data-i18n="d10">Photocellules et capteurs de sécurité pour une protection optimale.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400" class="card-img" alt="Acc">
+              <div class="card-body">
+                <h4 data-i18n="p11">Accessoire Automatisme</h4>
+                <p data-i18n="d11">Feux clignotants LED pour signalisation et sécurité des accès.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=400" class="card-img" alt="Acc">
+              <div class="card-body">
+                <h4 data-i18n="p12">Accessoire Automatisme</h4>
+                <p data-i18n="d12">Télécommandes universelles et récepteurs longue portée.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button class="nav-arrow next" onclick="slide('track2', 1)">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Catégorie 3: Tinda -->
+    <div class="cat-block">
+      <div class="cat-header">
+        <div class="cat-title">
+          <small data-i18n="cat3Sub">Ombrage</small>
+          <h3 data-i18n="cat3Title">Tous types de Tinda</h3>
+        </div>
+      </div>
+      <div class="slider-wrap">
+        <button class="nav-arrow prev" onclick="slide('track3', -1)">&#10094;</button>
+        <div class="slider" id="track3">
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1631641628174-884c7e63b399?q=80&w=400" class="card-img" alt="Bras">
+              <div class="card-body">
+                <h4 data-i18n="p13">Tinda à bras articulé</h4>
+                <p data-i18n="d13">Store banne robuste à ouverture facile. Protection solaire efficace.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=400" class="card-img" alt="Corbeille">
+              <div class="card-body">
+                <h4 data-i18n="p14">Tinda Corbeille</h4>
+                <p data-i18n="d14">Charme rétro pour boutiques et hôtels. Personnalisable à souhait.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=400" class="card-img" alt="Monobloc">
+              <div class="card-body">
+                <h4 data-i18n="p15">Tinda Monobloc</h4>
+                <p data-i18n="d15">Couverture de grandes terrasses. Structure compacte et résistante.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=400" class="card-img" alt="Pergola">
+              <div class="card-body">
+                <h4 data-i18n="p16">Pergola</h4>
+                <p data-i18n="d16">Extension de vie extérieure. Structure fixe élégante et durable.</p>
+              </div>
+            </div>
+          </a>
+          <a href="#devis" class="card-link">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1596236561296-6b74681323cd?q=80&w=400" class="card-img" alt="Balcon">
+              <div class="card-body">
+                <h4 data-i18n="p17">Tinda Balcon</h4>
+                <p data-i18n="d17">Store vertical pour balcons et loggias. Intimité et ombre garanties.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button class="nav-arrow next" onclick="slide('track3', 1)">&#10095;</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DEVIS (Ajout Champ "Service") -->
+<section id="devis" class="quote-section">
+  <div class="quote-container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <h2 data-i18n="formTitle">Demander un Devis Gratuit</h2>
+      <p data-i18n="formSub">Recevez une estimation rapide.</p>
+    </div>
+    
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="YOUR_KEY">
+      
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="lblNom">Nom</label>
+          <input type="text" name="nom" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lblTel">Téléphone</label>
+          <input type="tel" name="tel" class="form-control" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label data-i18n="lblAddr">Adresse</label>
+        <input type="text" name="adresse" class="form-control">
+      </div>
+
+      <!-- NOUVEAU: CHOIX DU SERVICE -->
+      <div class="form-group">
+        <label data-i18n="lblSujet">Type de Service</label>
+        <select name="service" class="form-control">
+          <option value="Portails/Rideaux" data-i18n="opt1">Portails & Rideaux Métalliques</option>
+          <option value="Tinda/Pergola" data-i18n="opt2">Tinda & Pergola</option>
+          <option value="Accessoires/Barrières" data-i18n="opt3">Accessoires & Barrières</option>
+          <option value="Maintenance" data-i18n="opt4">Dépannage / Maintenance</option>
+          <option value="Autre" data-i18n="opt5">Autre demande</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label data-i18n="lblMsg">Votre besoin</label>
+        <textarea name="message" rows="3" class="form-control"></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-orange" style="width:100%" data-i18n="btnSend">Envoyer</button>
+    </form>
+  </div>
+</section>
+
+<!-- VAGUE DE SÉPARATION (Sans ligne blanche) -->
+<svg class="wave-divider" viewBox="0 0 1440 320" preserveAspectRatio="none">
+  <path fill-opacity="1" d="M0,160L80,149.3C160,139,320,117,480,128C640,139,800,181,960,192C1120,203,1280,181,1360,170.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+</svg>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container contact-grid">
+    <div class="contact-text">
+      <h2 data-i18n="contactTitle">Nos Coordonnées</h2>
+      <p data-i18n="contactText">Notre siège est à Bouira, nous intervenons partout.</p>
+      
+      <!-- Icone SVG MAP -->
+      <div class="info-row">
+        <div class="info-icon-box">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <strong style="display:block;">El Adjiba</strong>
+          <span style="opacity:0.8;">Bouira, Algérie</span>
+        </div>
+      </div>
+      
+      <!-- Icone SVG PHONE -->
+      <div class="info-row">
+        <div class="info-icon-box">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div>
+          <strong style="display:block;">+213 796 096 433</strong>
+          <span style="opacity:0.8;">Service Client</span>
+        </div>
+      </div>
+      
+      <!-- Icone SVG MAIL -->
+      <div class="info-row">
+        <div class="info-icon-box">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div>
+          <strong style="display:block;">contact@malek-auto.com</strong>
+          <span style="opacity:0.8;">Réponse sous 24h</span>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <iframe class="map" title="Carte Bouira" src="https://www.google.com/maps?q=Bouira,+Algeria&output=embed" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-divider"></div>
+    
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 style="color:var(--primary);">MALEK AUTOMATISME</h4>
+        <p data-i18n="footerDesc">Depuis 2016, nous sommes leaders en Algérie pour la pose de rideaux métalliques, portails électriques et systèmes de sécurité.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4 data-i18n="ftLinks">Navigation</h4>
+        <ul>
+          <li><a href="#catalogue">Catalogue Produits</a></li>
+          <li><a href="#about">Notre Entreprise</a></li>
+          <li><a href="#contact">Contact & Plan</a></li>
+          <li><a href="#devis">Demander un Devis</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="navCat">Produits Phares</h4>
+        <ul>
+          <li><a href="#">Rideaux Métalliques</a></li>
+          <li><a href="#">Portails Coulissants</a></li>
+          <li><a href="#">Barrières Levantes</a></li>
+          <li><a href="#">Pergolas & Tindas</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4 data-i18n="ftLegal">Horaires</h4>
+        <ul>
+          <li>Samedi - Jeudi</li>
+          <li style="font-weight:700;">08:00 - 18:00</li>
+          <li style="margin-top:0.5rem; opacity:0.8; font-size:0.85rem;">Vendredi: Urgences</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // SLIDER
+  function slide(id, dir) {
+    const track = document.getElementById(id);
+    const scrollAmt = 280; 
+    const isRTL = document.body.classList.contains('rtl');
+    const val = isRTL ? -scrollAmt : scrollAmt;
+    track.scrollBy({ left: val * dir, behavior: 'smooth' });
+  }
+
+  // MENU MOBILE
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  // LANGUE
+  const translations = {
+    fr: {
+      metaTitle: "Malek Automatisme | Rideaux & Portails",
+      btnQuote: "Devis Gratuit",
+      badge1: "Depuis 2016", badge2: "Intervention Rapide",
+      heroTitle: "Expert Rideaux Métalliques<br>& Portails Électriques",
+      heroDesc: "Installation professionnelle et réparation pour particuliers et industriels.",
+      btnCat: "Nos Produits", btnContact: "Nous Trouver",
+      aboutTitle: "Qui sommes-nous ?", aboutText: "Fondée en 2016, Malek Automatisme est votre partenaire de confiance pour la sécurisation de vos accès. Nous combinons savoir-faire artisanal et technologie moderne.",
+      check1: "Équipe qualifiée", check2: "Dépannage Urgence", check3: "Garantie matériel",
+      cat1Sub: "Fermetures", cat1Title: "Portails & Rideaux",
+      p1:"Rideau Rapide", d1:"Idéal pour les zones industrielles à fort trafic. Ouverture ultra-rapide et robuste.",
+      p2:"Rideau Métallique", d2:"Sécurité maximale pour commerces et entrepôts. Lames pleines ou micro-perforées.",
+      p3:"Portail Battant", d3:"Style classique avec motorisation moderne. Idéal pour les entrées résidentielles.",
+      p4:"Portail Coulissant", d4:"Solution gain de place par excellence. Parfait pour les terrains en pente.",
+      p5:"Porte Sectionnelle", d5:"Isolation thermique et sécurité pour votre garage. Design moderne et silencieux.",
+      cat2Sub: "Automatisme", cat2Title: "Accessoires & Barrières",
+      p6:"Accessoire Automatisme", d6:"Large gamme de pièces de rechange et composants pour tous vos systèmes.",
+      p7:"Accessoire Automatisme", d7:"Moteurs puissants et durables pour portails lourds et usage intensif.",
+      p8:"Barrière Levante", d8:"Contrôle d'accès efficace pour parkings et résidences privées.",
+      p9:"Barrière Motorline", d9:"La référence professionnelle en matière de barrières automatiques rapides.",
+      p10:"Accessoire Automatisme", d10:"Photocellules et capteurs de sécurité pour une protection optimale.",
+      p11:"Accessoire Automatisme", d11:"Feux clignotants LED pour signalisation et sécurité des accès.",
+      p12:"Accessoire Automatisme", d12:"Télécommandes universelles et récepteurs longue portée.",
+      cat3Sub: "Ombrage", cat3Title: "Tous types de Tinda",
+      p13:"Tinda à bras articulé", d13:"Store banne robuste à ouverture facile. Protection solaire efficace.",
+      p14:"Tinda Corbeille", d14:"Charme rétro pour boutiques et hôtels. Personnalisable à souhait.",
+      p15:"Tinda Monobloc", d15:"Couverture de grandes terrasses. Structure compacte et résistante.",
+      p16:"Pergola", d16:"Extension de vie extérieure. Structure fixe élégante et durable.",
+      p17:"Tinda Balcon", d17:"Store vertical pour balcons et loggias. Intimité et ombre garanties.",
+      formTitle: "Demander un Devis Gratuit", formSub: "Recevez une estimation rapide.",
+      lblNom: "Nom", lblTel: "Téléphone", lblAddr: "Adresse", 
+      lblSujet: "Type de Service", opt1:"Portails & Rideaux Métalliques", opt2:"Tinda & Pergola", opt3:"Accessoires & Barrières", opt4:"Dépannage / Maintenance", opt5:"Autre demande",
+      lblMsg: "Votre besoin", btnSend: "Envoyer",
+      contactTitle: "Nos Coordonnées", contactText: "Notre siège est à Bouira, nous intervenons partout.",
+      footerDesc: "Depuis 2016, nous sommes leaders en Algérie pour la pose de rideaux métalliques, portails électriques et systèmes de sécurité.", 
+      ftLinks: "Navigation", ftLegal: "Horaires", navCat: "Produits Phares", navAbout:"Entreprise", navContact:"Contact"
+    },
+    ar: {
+      metaTitle: "مالك أوتوماتيزم | ستائر وبوابات",
+      btnQuote: "طلب عرض سعر",
+      badge1: "منذ 2016", badge2: "تدخل سريع",
+      heroTitle: "خبير الستائر المعدنية<br>والبوابات الكهربائية",
+      heroDesc: "تركيب احترافي وإصلاح للأفراد والشركات.",
+      btnCat: "منتجاتنا", btnContact: "موقعنا",
+      aboutTitle: "من نحن؟", aboutText: "تأسست عام 2016، مالك أوتوماتيزم هي شريكك الموثوق لتأمين مداخلك. نجمع بين الحرفية والتكنولوجيا الحديثة.",
+      check1: "فريق مؤهل", check2: "إصلاح طارئ", check3: "ضمان المعدات",
+      cat1Sub: "إغلاقات", cat1Title: "بوابات وستائر",
+      p1:"ستار سريع", d1:"مثالي للمناطق الصناعية ذات الحركة الكثيفة. فتح سريع وقوي.",
+      p2:"ستار معدني", d2:"أقصى درجات الأمان للمتاجر والمستودعات. شرائح صلبة أو مثقوبة.",
+      p3:"بوابة مفصلية", d3:"نمط كلاسيكي مع محرك حديث. مثالي للمداخل السكنية.",
+      p4:"بوابة منزلقة", d4:"الحل الأمثل لتوفير المساحة. مثالي للأراضي المنحدرة.",
+      p5:"باب مقطعي", d5:"عزل حراري وأمان للمرآب الخاص بك. تصميم حديث وصامت.",
+      cat2Sub: "تشغيل آلي", cat2Title: "إكسسوارات وحواجز",
+      p6:"إكسسوار تشغيل آلي", d6:"مجموعة واسعة من قطع الغيار والمكونات لجميع أنظمتك.",
+      p7:"إكسسوار تشغيل آلي", d7:"محركات قوية ومتينة للبوابات الثقيلة والاستخدام المكثف.",
+      p8:"حاجز رافع", d8:"تحكم فعال في الوصول لمواقف السيارات والمساكن الخاصة.",
+      p9:"حاجز Motorline", d9:"المرجع المهني في مجال الحواجز الأوتوماتيكية السريعة.",
+      p10:"إكسسوار تشغيل آلي", d10:"خلايا ضوئية وحساسات أمان لحماية مثالية.",
+      p11:"إكسسوار تشغيل آلي", d11:"أضواء وامضة LED للإشارة وأمان المداخل.",
+      p12:"إكسسوار تشغيل آلي", d12:"أجهزة تحكم عن بعد عالمية ومستقبلات بعيدة المدى.",
+      cat3Sub: "تظليل", cat3Title: "جميع أنواع التيندا",
+      p13:"تيندا ذراع مفصلي", d13:"مظلة قوية سهلة الفتح. حماية شمسية فعالة.",
+      p14:"تيندا سلة", d14:"سحر كلاسيكي للمحلات والفنادق. قابل للتخصيص حسب الرغبة.",
+      p15:"تيندا مونو بلوك", d15:"تغطية التراسات الكبيرة. هيكل مدمج ومقاوم.",
+      p16:"بيرغولا", d16:"تمديد للحياة الخارجية. هيكل ثابت أنيق ومتين.",
+      p17:"تيندا شرفة", d17:"ستار عمودي للشرفات والمقطع. خصوصية وظل مضمونان.",
+      formTitle: "طلب عرض سعر مجاني", formSub: "احصل على تقدير سريع.",
+      lblNom: "الاسم", lblTel: "الهاتف", lblAddr: "العنوان",
+      lblSujet: "نوع الخدمة", opt1:"بوابات وستائر معدنية", opt2:"تيندا وبيرغولا", opt3:"إكسسوارات وحواجز", opt4:"إصلاح / صيانة", opt5:"طلب آخر",
+      lblMsg: "احتياجك", btnSend: "إرسال",
+      contactTitle: "بيانات الاتصال", contactText: "مقرنا في البويرة، وننقل إلى كل مكان.",
+      footerDesc: "منذ 2016، نحن رواد في الجزائر في تركيب الستائر المعدنية، البوابات الكهربائية وأنظمة الأمان.", 
+      ftLinks: "تصفح", ftLegal: "مواقيت", navCat: "منتجات مميزة", navAbout:"الشركة", navContact:"اتصال"
+    }
+  };
+
+  function setLang(l) {
+    document.documentElement.lang = l;
+    document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    document.body.classList.toggle('rtl', l === 'ar');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(l === 'fr' ? 'btnFr' : 'btnAr').classList.add('active');
+    
+    const t = translations[l];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      if(t[el.dataset.i18n]) el.innerHTML = t[el.dataset.i18n];
+    });
+    // Options select
+    document.querySelectorAll('option[data-i18n]').forEach(opt => {
+      if(t[opt.dataset.i18n]) opt.innerText = t[opt.dataset.i18n];
+    });
+  }
+</script>
+</body>
+</html>
