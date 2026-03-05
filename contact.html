@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="metaTitle">Qui Sommes-Nous | Malek Automatisme</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* THÈME BLANC & ORANGE */
+      --primary: #f97316;       
+      --primary-dark: #c2410c;
+      --text-dark: #111827;     
+      --text-grey: #4b5563;     
+      --bg-white: #ffffff;
+      --bg-light: #fff7ed;      
+      --bg-orange-soft: #ffedd5; 
+      --border: #e5e7eb;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      font-family: 'Manrope', 'Cairo', sans-serif;
+      background: var(--bg-white);
+      color: var(--text-dark);
+      line-height: 1.7; /* Lecture plus confortable */
+      overflow-x: hidden;
+      padding-top: 70px;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; transition: 0.2s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    
+    /* ICONES */
+    .icon { width: 24px; height: 24px; fill: currentColor; }
+    .icon-lg { width: 32px; height: 32px; }
+
+    /* TYPO */
+    h1, h2, h3, h4 { color: var(--text-dark); margin: 0; font-weight: 800; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.5rem; color: var(--primary); }
+    h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+    p { margin-bottom: 1.5rem; color: var(--text-grey); font-size: 1.05rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* HEADER (Identique) */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.98);
+      border-bottom: 1px solid var(--border);
+      height: 70px; display: flex; align-items: center;
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .logo { font-size: 1.4rem; font-weight: 900; color: var(--text-dark); text-transform: uppercase; }
+    .logo span { color: var(--primary); }
+    .nav-menu { display: flex; gap: 2rem; }
+    .nav-menu a { font-weight: 600; font-size: 0.95rem; }
+    .nav-menu a:hover { color: var(--primary); }
+    .nav-right { display: flex; gap: 1rem; align-items: center; }
+    .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .lang-btn { background: white; border: none; padding: 5px 10px; font-weight: 700; cursor: pointer; font-size: 0.8rem; }
+    .lang-btn.active { background: var(--primary); color: white; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 0.6rem 1.2rem; font-weight: 700; border-radius: var(--radius);
+      border: none; cursor: pointer; transition: 0.2s; font-size: 0.9rem;
+    }
+    .btn-orange { background: var(--primary); color: white; }
+    .btn-orange:hover { background: var(--primary-dark); }
+    
+    /* PAGE HERO (Petit header de page) */
+    .page-header {
+      background: var(--bg-light);
+      padding: 4rem 0;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .breadcrumb { font-size: 0.9rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* SECTION HISTOIRE & IDENTITÉ (Le bloc principal) */
+    .story-section { padding: 5rem 0; }
+    .story-grid { 
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; 
+    }
+    .story-img { position: relative; }
+    .story-img img { 
+      border-radius: var(--radius); 
+      box-shadow: 20px 20px 0 var(--bg-orange-soft);
+    }
+    .story-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--primary); color: white;
+      padding: 1.5rem; border-radius: var(--radius);
+      font-weight: 800; text-align: center;
+      box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+    }
+    .story-badge span { display: block; font-size: 2rem; line-height: 1; }
+    .story-badge small { font-size: 0.8rem; text-transform: uppercase; }
+
+    /* SECTION SERVICES DETAILLÉS (Unique & Pro) */
+    .services-detail-section { 
+      background: var(--bg-white); 
+      padding: 0 0 5rem; 
+    }
+    .text-block {
+      max-width: 900px; margin: 0 auto;
+      background: white; border: 1px solid var(--border);
+      padding: 3rem; border-radius: var(--radius);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+      position: relative; top: -50px; /* Chevauchement stylé */
+    }
+    
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;
+    }
+    .feature-item { padding: 1.5rem; background: var(--bg-light); border-radius: var(--radius); border-left: 4px solid var(--primary); }
+    .feature-item h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .feature-item p { font-size: 0.9rem; margin-bottom: 0; }
+
+    /* VALEURS */
+    .values-section { padding: 5rem 0; background: var(--bg-light); text-align: center; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .value-card { background: white; padding: 2rem; border-radius: var(--radius); transition: 0.3s; }
+    .value-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    .value-icon { 
+      width: 60px; height: 60px; background: var(--bg-orange-soft); color: var(--primary);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* VAGUE de séparation (Identique index) */
+    .wave-divider {
+      display: block; width: 100%; height: 60px;
+      fill: var(--bg-orange-soft);
+      margin-bottom: -1px; /* Important pour coller */
+    }
+
+    /* FOOTER (Identique) */
+    footer { background: var(--bg-orange-soft); color: var(--text-grey); padding: 3rem 0; font-size: 0.95rem; }
+    .footer-divider { max-width: 1200px; margin: 0 auto 3rem; border-top: 3px solid white; opacity: 0.8; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-col h4 { color: var(--text-dark); margin-bottom: 1.2rem; }
+    .footer-col a:hover { color: var(--primary); padding-left: 5px; }
+
+    /* RESPONSIVE */
+    .burger { display: none; background: none; border: none; cursor: pointer; }
+    .mobile-menu-overlay { display: none; position: fixed; top: 70px; left: 0; right: 0; background: white; padding: 1rem; flex-direction: column; gap: 1rem; border-bottom: 1px solid var(--border); }
+    .mobile-menu-overlay.open { display: flex; }
+
+    @media (max-width: 900px) {
+      .story-grid, .feature-grid, .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-menu, .btn-quote-header { display: none; }
+      .burger { display: block; }
+      .story-badge { right: 0; bottom: -10px; padding: 1rem; }
+      .text-block { padding: 1.5rem; top: 0; margin-top: 2rem; }
+      .story-section { padding: 3rem 0 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR (Identique) -->
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">MALEK<span>AUTO</span></a>
+    
+    <div class="nav-menu">
+      <a href="index.html#catalogue" data-i18n="navCat">Catalogue</a>
+      <a href="#" style="color:var(--primary);" data-i18n="navAbout">Entreprise</a>
+      <a href="index.html#contact" data-i18n="navContact">Contact</a>
+    </div>
+
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('fr')" id="btnFr">FR</button>
+        <button class="lang-btn" onclick="setLang('ar')" id="btnAr">AR</button>
+      </div>
+      <a href="index.html#devis" class="btn btn-orange btn-quote-header" data-i18n="btnQuote">Devis Gratuit</a>
+      <button class="burger" onclick="toggleMenu()">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu-overlay" id="mobileMenu">
+  <a href="index.html#catalogue" data-i18n="navCat">Catalogue</a>
+  <a href="#" style="color:var(--primary);" data-i18n="navAbout">Entreprise</a>
+  <a href="index.html#contact" data-i18n="navContact">Contact</a>
+  <a href="index.html#devis" data-i18n="btnQuote">Devis Gratuit</a>
+</div>
+
+<!-- HEADER DE PAGE -->
+<section class="page-header">
+  <div class="container">
+    <div class="breadcrumb">Malek Automatisme</div>
+    <h1 data-i18n="pgTitle">Notre Histoire & Expertise</h1>
+    <p style="max-width:600px; margin:0 auto;" data-i18n="pgSub">Plus qu'une entreprise, un partenaire de confiance pour votre sécurité depuis 2016.</p>
+  </div>
+</section>
+
+<!-- SECTION PRINCIPALE (HISTOIRE) -->
+<section class="story-section">
+  <div class="container story-grid">
+    <div class="story-img">
+      <!-- Image d'équipe ou d'atelier -->
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop" alt="Atelier Malek Auto">
+      <div class="story-badge">
+        <span data-i18n="statYears">8+</span>
+        <small data-i18n="statLabel">Années d'expérience</small>
+      </div>
+    </div>
+    <div class="story-content">
+      <h2 data-i18n="storyTitle">L'excellence au service de l'industrie et de l'habitat</h2>
+      <p data-i18n="storyP1">Fondée en 2016 dans la région de Bouira (El Adjiba), <strong>Malek Automatisme</strong> est née d'une volonté simple : apporter des solutions de fermeture robustes, modernes et automatisées à un marché algérien en pleine expansion.</p>
+      <p data-i18n="storyP2">Ce qui a commencé comme une petite structure artisanale est devenu aujourd'hui une référence régionale. Nous ne nous contentons pas d'installer des rideaux ou des portails ; nous analysons vos besoins spécifiques, que vous soyez un particulier cherchant à sécuriser sa villa ou un industriel nécessitant des accès logistiques rapides.</p>
+      <p style="font-weight:700; color:var(--text-dark);" data-i18n="storyConclusion">Notre force réside dans notre capacité à maîtriser toute la chaîne : du conseil technique à la maintenance, en passant par une installation millimétrée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION SERVICES DÉTAILLÉS (Bloc Long & Pro) -->
+<section class="services-detail-section">
+  <div class="container">
+    <div class="text-block">
+      <h3 style="text-align:center; margin-bottom:2rem;" data-i18n="srvTitle">Une approche globale de votre sécurité</h3>
+      <p data-i18n="srvIntro">Chez Malek Automatisme, chaque projet est unique. Nous intervenons sur trois axes principaux pour garantir votre satisfaction totale :</p>
+      
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h4 data-i18n="f1Title">Installation Certifiée</h4>
+          <p data-i18n="f1Desc">Pose de rideaux métalliques, portails coulissants/battants et portes sectionnelles respectant les normes de sécurité les plus strictes.</p>
+        </div>
+        <div class="feature-item">
+          <h4 data-i18n="f2Title">Motorisation & Domotique</h4>
+          <p data-i18n="f2Desc">Transformation de vos ouvertures manuelles en systèmes automatiques intelligents, contrôlables à distance.</p>
+        </div>
+        <div class="feature-item">
+          <h4 data-i18n="f3Title">Maintenance & SAV</h4>
+          <p data-i18n="f3Desc">Une équipe réactive pour le dépannage de moteurs, le remplacement de lames ou la réparation de cartes électroniques.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem; text-align:center;">
+        <p data-i18n="srvOutro">Nous proposons également une gamme complète de <strong>solutions d'ombrage</strong> (Tinda, Pergola) pour allier confort et esthétique dans vos espaces extérieurs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOS VALEURS -->
+<section class="values-section">
+  <div class="container">
+    <h2 data-i18n="valTitle">Pourquoi nous choisir ?</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        </div>
+        <h4 data-i18n="val1">Fiabilité</h4>
+        <p data-i18n="val1Desc">Matériel de haute qualité (marques reconnues) et installation durable.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </div>
+        <h4 data-i18n="val2">Réactivité</h4>
+        <p data-i18n="val2Desc">Intervention rapide en cas de panne bloquante pour les professionnels.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/></svg>
+        </div>
+        <h4 data-i18n="val3">Transparence</h4>
+        <p data-i18n="val3Desc">Devis clairs, sans coûts cachés, et conseils honnêtes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VAGUE DE SÉPARATION (Collée au footer) -->
+<svg class="wave-divider" viewBox="0 0 1440 320" preserveAspectRatio="none">
+  <path fill-opacity="1" d="M0,160L80,149.3C160,139,320,117,480,128C640,139,800,181,960,192C1120,203,1280,181,1360,170.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+</svg>
+
+<!-- FOOTER (Identique) -->
+<footer>
+  <div class="container">
+    <div class="footer-divider"></div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 style="color:var(--primary);">MALEK AUTOMATISME</h4>
+        <p data-i18n="footerDesc">Depuis 2016, nous sommes leaders en Algérie pour la pose de rideaux métalliques, portails électriques et systèmes de sécurité.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="ftLinks">Navigation</h4>
+        <ul>
+          <li><a href="index.html#catalogue">Catalogue Produits</a></li>
+          <li><a href="#">Notre Entreprise</a></li>
+          <li><a href="index.html#contact">Contact & Plan</a></li>
+          <li><a href="index.html#devis">Demander un Devis</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="navCat">Produits Phares</h4>
+        <ul>
+          <li><a href="#">Rideaux Métalliques</a></li>
+          <li><a href="#">Portails Coulissants</a></li>
+          <li><a href="#">Barrières Levantes</a></li>
+          <li><a href="#">Pergolas & Tindas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="ftLegal">Horaires</h4>
+        <ul>
+          <li>Samedi - Jeudi</li>
+          <li style="font-weight:700;">08:00 - 18:00</li>
+          <li style="margin-top:0.5rem; opacity:0.8; font-size:0.85rem;">Vendredi: Urgences</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  const translations = {
+    fr: {
+      metaTitle: "Qui Sommes-Nous | Malek Automatisme",
+      btnQuote: "Devis Gratuit",
+      navCat: "Catalogue", navAbout: "Entreprise", navContact: "Contact",
+      pgTitle: "Notre Histoire & Expertise", pgSub: "Plus qu'une entreprise, un partenaire de confiance pour votre sécurité depuis 2016.",
+      statYears: "8+", statLabel: "Années d'expérience",
+      storyTitle: "L'excellence au service de l'industrie et de l'habitat",
+      storyP1: "Fondée en 2016 dans la région de Bouira (El Adjiba), <strong>Malek Automatisme</strong> est née d'une volonté simple : apporter des solutions de fermeture robustes, modernes et automatisées à un marché algérien en pleine expansion.",
+      storyP2: "Ce qui a commencé comme une petite structure artisanale est devenu aujourd'hui une référence régionale. Nous ne nous contentons pas d'installer des rideaux ou des portails ; nous analysons vos besoins spécifiques, que vous soyez un particulier cherchant à sécuriser sa villa ou un industriel nécessitant des accès logistiques rapides.",
+      storyConclusion: "Notre force réside dans notre capacité à maîtriser toute la chaîne : du conseil technique à la maintenance, en passant par une installation millimétrée.",
+      srvTitle: "Une approche globale de votre sécurité",
+      srvIntro: "Chez Malek Automatisme, chaque projet est unique. Nous intervenons sur trois axes principaux pour garantir votre satisfaction totale :",
+      f1Title: "Installation Certifiée", f1Desc: "Pose de rideaux métalliques, portails coulissants/battants et portes sectionnelles respectant les normes de sécurité.",
+      f2Title: "Motorisation & Domotique", f2Desc: "Transformation de vos ouvertures manuelles en systèmes automatiques intelligents, contrôlables à distance.",
+      f3Title: "Maintenance & SAV", f3Desc: "Une équipe réactive pour le dépannage de moteurs, le remplacement de lames ou la réparation de cartes.",
+      srvOutro: "Nous proposons également une gamme complète de <strong>solutions d'ombrage</strong> (Tinda, Pergola) pour allier confort et esthétique.",
+      valTitle: "Pourquoi nous choisir ?",
+      val1: "Fiabilité", val1Desc: "Matériel de haute qualité (marques reconnues) et installation durable.",
+      val2: "Réactivité", val2Desc: "Intervention rapide en cas de panne bloquante pour les professionnels.",
+      val3: "Transparence", val3Desc: "Devis clairs, sans coûts cachés, et conseils honnêtes.",
+      footerDesc: "Depuis 2016, nous sommes leaders en Algérie pour la pose de rideaux métalliques, portails électriques et systèmes de sécurité.",
+      ftLinks: "Navigation", ftLegal: "Horaires"
+    },
+    ar: {
+      metaTitle: "من نحن | مالك أوتوماتيزم",
+      btnQuote: "طلب عرض سعر",
+      navCat: "كتالوج", navAbout: "الشركة", navContact: "اتصال",
+      pgTitle: "تاريخنا وخبرتنا", pgSub: "أكثر من مجرد شركة، شريك موثوق لأمانك منذ 2016.",
+      statYears: "+8", statLabel: "سنوات خبرة",
+      storyTitle: "التميز في خدمة الصناعة والسكن",
+      storyP1: "تأسست في عام 2016 في منطقة البويرة (العجيبة)، ولدت <strong>مالك أوتوماتيزم</strong> من إرادة بسيطة: توفير حلول إغلاق قوية وحديثة وآلية للسوق الجزائري المتنامي.",
+      storyP2: "ما بدأ كورشة حرفية صغيرة أصبح اليوم مرجعًا إقليميًا. نحن لا نكتفي بتركيب الستائر أو البوابات؛ بل نحلل احتياجاتك الخاصة، سواء كنت فردًا يسعى لتأمين فيلته أو صناعيًا يحتاج إلى وصول لوجستي سريع.",
+      storyConclusion: "تكمن قوتنا في قدرتنا على إتقان السلسلة بأكملها: من الاستشارة الفنية إلى الصيانة، مرورًا بالتركيب الدقيق.",
+      srvTitle: "مقاربة شاملة لأمانك",
+      srvIntro: "في مالك أوتوماتيزم، كل مشروع فريد. نحن نتدخل في ثلاثة محاور رئيسية لضمان رضاك التام:",
+      f1Title: "تركيب معتمد", f1Desc: "تركيب الستائر المعدنية، البوابات المنزلقة/المفصلية والأبواب المقطعية وفق معايير السلامة.",
+      f2Title: "محركات وتشغيل آلي", f2Desc: "تحويل فتحاتك اليدوية إلى أنظمة أوتوماتيكية ذكية يمكن التحكم فيها عن بعد.",
+      f3Title: "الصيانة وخدمة ما بعد البيع", f3Desc: "فريق سريع الاستجابة لإصلاح المحركات، استبدال الشرائح أو إصلاح البطاقات الإلكترونية.",
+      srvOutro: "نقدم أيضًا مجموعة كاملة من <strong>حلول التظليل</strong> (تيندا، بيرغولا) للجمع بين الراحة والجمالية.",
+      valTitle: "لماذا تختارنا؟",
+      val1: "الموثوقية", val1Desc: "معدات عالية الجودة (علامات تجارية معروفة) وتركيب دائم.",
+      val2: "الاستجابة", val2Desc: "تدخل سريع في حالة حدوث عطل معطل للمهنيين.",
+      val3: "الشفافية", val3Desc: "عروض أسعار واضحة، بدون تكاليف خفية، ونصائح صادقة.",
+      footerDesc: "منذ 2016، نحن رواد في الجزائر في تركيب الستائر المعدنية، البوابات الكهربائية وأنظمة الأمان.",
+      ftLinks: "تصفح", ftLegal: "مواقيت"
+    }
+  };
+
+  function setLang(l) {
+    document.documentElement.lang = l;
+    document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    document.body.classList.toggle('rtl', l === 'ar');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(l === 'fr' ? 'btnFr' : 'btnAr').classList.add('active');
+    
+    const t = translations[l];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      if(t[el.dataset.i18n]) el.innerHTML = t[el.dataset.i18n];
+    });
+  }
+</script>
+</body>
+</html>
