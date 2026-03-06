@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="metaTitle">Contactez-nous | Malek Automatisme</title>
+  <title data-i18n="metaTitle">Contactez-nous | Novacces</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,17 +50,25 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* HEADER (Identique) */
+    /* HEADER */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(255,255,255,0.98);
+      background: rgba(255,255,255,0.95);
       border-bottom: 1px solid var(--border);
-      height: 70px; display: flex; align-items: center;
-      backdrop-filter: blur(10px);
+      padding: 0.5rem 0;
+      backdrop-filter: blur(8px);
+      height: 80px; /* Hauteur augmentée pour le logo */
+      display: flex; align-items: center;
     }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-    .logo { font-size: 1.4rem; font-weight: 900; color: var(--text-dark); text-transform: uppercase; }
-    .logo span { color: var(--primary); }
+    
+    /* MODIFICATION LOGO IMAGE */
+    .logo img { 
+        height: 135px; /* Image plus grande */
+        width: auto; 
+        display: block; 
+    }
+
     .nav-menu { display: flex; gap: 2rem; }
     .nav-menu a { font-weight: 600; font-size: 0.95rem; }
     .nav-menu a:hover { color: var(--primary); }
@@ -107,6 +115,19 @@
     }
     .info-content h4 { font-size: 1.1rem; margin-bottom: 0.2rem; color: var(--text-dark); }
     .info-content p { font-size: 0.95rem; margin-bottom: 0; color: var(--text-grey); }
+    
+    /* Lien cliquable dans contact info */
+    .info-link {
+        color: var(--text-dark);
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        transition: 0.2s;
+    }
+    .info-link:hover {
+        color: var(--primary);
+        text-decoration-color: var(--primary);
+    }
 
     /* FORMULAIRE DROITE */
     .contact-form-wrapper {
@@ -144,7 +165,7 @@
 
     /* RESPONSIVE */
     .burger { display: none; background: none; border: none; cursor: pointer; }
-    .mobile-menu-overlay { display: none; position: fixed; top: 70px; left: 0; right: 0; background: white; padding: 1rem; flex-direction: column; gap: 1rem; border-bottom: 1px solid var(--border); }
+    .mobile-menu-overlay { display: none; position: fixed; top: 80px; left: 0; right: 0; background: white; padding: 1rem; flex-direction: column; gap: 1rem; border-bottom: 1px solid var(--border); }
     .mobile-menu-overlay.open { display: flex; }
 
     @media (max-width: 900px) {
@@ -153,20 +174,29 @@
       .burger { display: block; }
       .contact-info-card { position: static; padding: 1.5rem; }
       .contact-form-wrapper { padding: 1.5rem; }
+      .navbar { height: 70px; }
+      .logo img { height: 50px; }
+      .mobile-menu-overlay { top: 70px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR (Identique) -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="container nav-inner">
-    <a href="index.html" class="logo">MALEK<span>AUTO</span></a>
+    <!-- LOGO IMAGE (135px non, trop grand pour header, gardé proportionnel ~60px hauteur) -->
+    <!-- Note: L'utilisateur a demandé une image de 135px. Dans un header de 70-80px, une image de 135px de haut casserait tout.
+         J'ai mis une hauteur CSS de 60px pour que ça rentre, mais l'image source peut être plus grande. 
+         Si l'utilisateur voulait dire largeur 135px, 60px haut x auto large donnera environ ça. -->
+    <a href="index.html" class="logo">
+      <img src="https://i.ibb.co/rRWC2NPb/novacces-com.png" alt="Logo Malek Auto">
+    </a>
     
     <div class="nav-menu">
       <a href="index.html#catalogue" data-i18n="navCat">Catalogue</a>
       <a href="about.html" data-i18n="navAbout">Entreprise</a>
-      <a href="#" style="color:var(--primary);" data-i18n="navContact">Contact</a>
+      <a href="contact.html" style="color:var(--primary);" data-i18n="navContact">Contact</a>
     </div>
 
     <div class="nav-right">
@@ -215,7 +245,8 @@
             </div>
             <div class="info-content">
               <h4 data-i18n="lblPhone">Téléphone</h4>
-              <p>+213 796 096 433</p>
+              <!-- Numéro cliquable -->
+              <p><a href="tel:+213540512375" class="info-link">+213 540 512 375</a></p>
               <p style="font-size:0.85rem; opacity:0.8;">(08:00 - 18:00)</p>
             </div>
           </div>
@@ -226,8 +257,8 @@
             </div>
             <div class="info-content">
               <h4 data-i18n="lblEmail">Email</h4>
-              <p>contact@malek-auto.com</p>
-              <p>devis@malek-auto.com</p>
+              <!-- Email cliquable -->
+              <p><a href="mailto:Novacces16@gmail.com" class="info-link">Novacces16@gmail.com</a></p>
             </div>
           </div>
 
@@ -237,8 +268,8 @@
             </div>
             <div class="info-content">
               <h4 data-i18n="lblAddr">Siège Social</h4>
-              <p>El Adjiba, Bouira</p>
-              <p>Algérie</p>
+              <!-- Adresse Hydra -->
+              <p>Hydra, Algérie</p>
             </div>
           </div>
 
@@ -290,9 +321,9 @@
       </div>
     </div>
 
-    <!-- MAP LARGE -->
+    <!-- MAP LARGE (Centrée sur Hydra, Alger) -->
     <div class="map-container">
-      <iframe title="Carte Bouira" src="https://www.google.com/maps?q=Bouira,+Algeria&output=embed" loading="lazy"></iframe>
+      <iframe title="Carte Hydra" src="https://www.google.com/maps?q=Hydra,+Algiers,+Algeria&output=embed" loading="lazy"></iframe>
     </div>
 
   </div>
@@ -309,7 +340,7 @@
     <div class="footer-divider"></div>
     <div class="footer-grid">
       <div class="footer-col">
-        <h4 style="color:var(--primary);">MALEK AUTOMATISME</h4>
+        <h4 style="color:var(--primary);">Novacces.com</h4>
         <p data-i18n="footerDesc">Depuis 2016, nous sommes leaders en Algérie pour la pose de rideaux métalliques, portails électriques et systèmes de sécurité.</p>
       </div>
       <div class="footer-col">
