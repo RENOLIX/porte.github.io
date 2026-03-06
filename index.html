@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -68,14 +68,19 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(255,255,255,0.95);
       border-bottom: 1px solid var(--border);
-      padding: 0.8rem 0;
+      padding: 0.5rem 0; /* Un peu moins de padding pour laisser place au grand logo */
       backdrop-filter: blur(8px);
-      height: 70px; display: flex; align-items: center;
+      height: 80px; /* Hauteur augmentée pour le logo */
+      display: flex; align-items: center;
     }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
     
-    .logo { font-size: 1.4rem; font-weight: 900; color: var(--text-dark); text-transform: uppercase; display: flex; align-items: center; gap: 5px; }
-    .logo span { color: var(--primary); }
+    /* MODIFICATION LOGO IMAGE */
+    .logo img { 
+        height: 135px; /* Taille augmentée */
+        width: auto; 
+        display: block; 
+    }
 
     .nav-right { display: flex; gap: 1rem; align-items: center; }
     
@@ -122,20 +127,26 @@
     }
     .slider::-webkit-scrollbar { display: none; }
 
-    /* CARTE PRODUIT (Sans bouton) */
+    /* CARTE PRODUIT (Modifié pour Vertical) */
     .card {
       min-width: 260px; max-width: 260px;
       background: white; border: 1px solid var(--border);
       border-radius: var(--radius); overflow: hidden;
       transition: 0.3s;
       display: flex; flex-direction: column;
-      cursor: pointer; /* Indique cliquable */
+      cursor: pointer;
     }
-    /* Lien englobant toute la carte */
     .card-link { display: contents; color: inherit; } 
 
     .card:hover { border-color: var(--primary); box-shadow: 0 10px 20px rgba(249, 115, 22, 0.15); transform: translateY(-5px); }
-    .card-img { height: 180px; object-fit: cover; background: #eee; }
+    
+    /* MODIFICATION ICI: Hauteur augmentée pour le format vertical */
+    .card-img { 
+      height: 320px; /* Augmenté de 180px à 320px pour format vertical */
+      object-fit: cover; 
+      background: #eee; 
+    }
+    
     .card-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; }
     .card h4 { font-size: 1.1rem; margin-bottom: 0.8rem; font-weight: 700; }
     .card p { 
@@ -217,7 +228,8 @@
     /* Burger & Mobile Menu Overlay */
     .burger { display: none; background: none; border: none; cursor: pointer; color: var(--text-dark); }
     .mobile-menu-overlay {
-      position: fixed; top: 70px; left: 0; right: 0; background: white;
+      position: fixed; top: 80px; /* Ajusté à la nouvelle hauteur du header */
+      left: 0; right: 0; background: white;
       border-bottom: 1px solid var(--border); padding: 1rem;
       display: none; flex-direction: column; gap: 1rem;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -241,6 +253,9 @@
       .nav-arrow { display: none; } 
       .cat-header { flex-direction: column; align-items: flex-start; gap: 5px; }
       .about-img img { max-width: 100%; }
+      .logo img { height: 50px; } /* Un peu plus petit sur mobile mais toujours visible */
+      .navbar { height: 70px; } /* Header un peu moins haut sur mobile */
+      .mobile-menu-overlay { top: 70px; }
 
       /* Mobile Navbar */
       .nav-menu { display: none; }
@@ -291,7 +306,10 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="container nav-inner">
-    <a href="#" class="logo">MALEK<span>AUTO</span></a>
+    <!-- LOGO IMAGE (Remplace le texte) -->
+    <a href="#" class="logo">
+      <img src="https://i.ibb.co/rRWC2NPb/novacces-com.png" alt="Logo Malek Auto">
+    </a>
     
     <!-- Desktop Menu -->
     <div class="nav-menu">
@@ -339,13 +357,13 @@
     </div>
     <!-- Desktop Hero Image -->
     <div class="hero-img">
-      <img src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=1000&auto=format&fit=crop" alt="Portail">
+      <img src="https://i.ibb.co/xq74XHDZ/portail-zig-zag-acier-contemporain-1-31-jpg-7.jpg" alt="Portail">
     </div>
   </div>
   
   <!-- HERO MOBILE (Texte REMONTÉ) -->
   <div class="hero-mobile-container">
-    <img src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=800&auto=format&fit=crop" class="hero-mobile-bg" alt="Portail Mobile">
+    <img src="https://i.ibb.co/xq74XHDZ/portail-zig-zag-acier-contemporain-1-31-jpg-7.jpg" class="hero-mobile-bg" alt="Portail Mobile">
     <div class="hero-mobile-text">
       <h1 data-i18n="heroTitle">Expert Rideaux Métalliques<br>& Portails Électriques</h1>
       <p data-i18n="heroDesc">Installation professionnelle et réparation pour particuliers et industriels.</p>
@@ -358,11 +376,11 @@
 <section class="about-section" id="about">
   <div class="container about-grid">
     <div class="about-img">
-      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600&auto=format&fit=crop" alt="Technicien">
+      <img src="https://i.ibb.co/JRtwtDs5/novacces-com-1.png" alt="Technicien">
     </div>
     <div>
       <h2 data-i18n="aboutTitle">Qui sommes-nous ?</h2>
-      <p data-i18n="aboutText">Fondée en 2016, Malek Automatisme est votre partenaire de confiance pour la sécurisation de vos accès. Nous combinons savoir-faire artisanal et technologie moderne.</p>
+      <p data-i18n="aboutText">Fondée en 2016, Novacces est votre partenaire de confiance pour la sécurisation de vos accès. Nous combinons savoir-faire artisanal et technologie moderne.</p>
       <ul class="check-list">
         <li><span>✓</span> <span data-i18n="check1">Équipe qualifiée</span></li>
         <li><span>✓</span> <span data-i18n="check2">Dépannage Urgence</span></li>
@@ -389,7 +407,7 @@
         <div class="slider" id="track1">
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1599818820476-d477813a216c?q=80&w=400" class="card-img" alt="Rapide">
+              <img src="https://i.ibb.co/wFmFygR4/csm-Prime-V08-v2-a6f4f8ad33.jpg" class="card-img" alt="Rapide">
               <div class="card-body">
                 <h4 data-i18n="p1">Rideau Rapide</h4>
                 <p data-i18n="d1">Idéal pour les zones industrielles à fort trafic. Ouverture ultra-rapide et robuste.</p>
@@ -398,7 +416,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1628624747186-a941c72bb6e1?q=80&w=400" class="card-img" alt="Metal">
+              <img src="https://i.ibb.co/gMsRN4F6/rideau-metallique-blanc-ral9010-manuel-lames-pleines-7-10eme-l2500-h1500-classic.jpg" class="card-img" alt="Metal">
               <div class="card-body">
                 <h4 data-i18n="p2">Rideau Métallique</h4>
                 <p data-i18n="d2">Sécurité maximale pour commerces et entrepôts. Lames pleines ou micro-perforées.</p>
@@ -407,7 +425,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1615876063860-d971f6dca5dc?q=80&w=400" class="card-img" alt="Battant">
+              <img src="https://i.ibb.co/PZpsdmDG/portail-battant-aluminium.jpg" class="card-img" alt="Battant">
               <div class="card-body">
                 <h4 data-i18n="p3">Portail Battant</h4>
                 <p data-i18n="d3">Style classique avec motorisation moderne. Idéal pour les entrées résidentielles.</p>
@@ -416,7 +434,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1615876234918-9c5952f4c66e?q=80&w=400" class="card-img" alt="Coulissant">
+              <img src="https://i.ibb.co/Ndm7HQdY/ea874effcc1dc3ddd99a14b66f4522c0.jpg" class="card-img" alt="Coulissant">
               <div class="card-body">
                 <h4 data-i18n="p4">Portail Coulissant</h4>
                 <p data-i18n="d4">Solution gain de place par excellence. Parfait pour les terrains en pente.</p>
@@ -425,7 +443,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=400" class="card-img" alt="Garage">
+              <img src="https://i.ibb.co/39Gd4XPT/Portes-Sectionnelle.jpg" class="card-img" alt="Garage">
               <div class="card-body">
                 <h4 data-i18n="p5">Porte Sectionnelle</h4>
                 <p data-i18n="d5">Isolation thermique et sécurité pour votre garage. Design moderne et silencieux.</p>
@@ -450,16 +468,16 @@
         <div class="slider" id="track2">
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=400" class="card-img" alt="Acc">
+              <img src="https://i.ibb.co/Xxp3zYD8/butee-de-portail-a-visser-pour-portail-a-deux-battants-Sp-Lm-U.jpg" class="card-img" alt="Acc">
               <div class="card-body">
-                <h4 data-i18n="p6">Accessoire Automatisme</h4>
-                <p data-i18n="d6">Large gamme de pièces de rechange et composants pour tous vos systèmes.</p>
+                <h4 data-i18n="p6">Butée de portail à visser</h4>
+                <p data-i18n="d6">Accessoire à visser pour portails à deux battants en tôle galvanisée d’épaisseur 2,5 mm.</p>
               </div>
             </div>
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://plus.unsplash.com/premium_photo-1661963074092-23c34796329c?q=80&w=400" class="card-img" alt="Moteur">
+              <img src="https://i.ibb.co/Zz2zz6y6/novacces-com-350-x-550-px.png" class="card-img" alt="Moteur">
               <div class="card-body">
                 <h4 data-i18n="p7">Accessoire Automatisme</h4>
                 <p data-i18n="d7">Moteurs puissants et durables pour portails lourds et usage intensif.</p>
@@ -468,7 +486,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1575003666023-7ebf998f8287?q=80&w=400" class="card-img" alt="Barriere">
+              <img src="https://i.ibb.co/S4cW44F9/B614.jpg" class="card-img" alt="Barriere">
               <div class="card-body">
                 <h4 data-i18n="p8">Barrière Levante</h4>
                 <p data-i18n="d8">Contrôle d'accès efficace pour parkings et résidences privées.</p>
@@ -477,7 +495,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1565514020125-63b7593c2807?q=80&w=400" class="card-img" alt="Motorline">
+              <img src="https://i.ibb.co/QF7pMgCM/Whats-App-Image-2026-03-06-at-23-24-55.jpg" class="card-img" alt="Motorline">
               <div class="card-body">
                 <h4 data-i18n="p9">Barrière Motorline</h4>
                 <p data-i18n="d9">La référence professionnelle en matière de barrières automatiques rapides.</p>
@@ -486,7 +504,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1550041473-d296a3a8a18a?q=80&w=400" class="card-img" alt="Acc">
+              <img src="https://i.ibb.co/Lz1ct54Z/480477681-2642614229462360-2934953384089500639-n.jpg" class="card-img" alt="Acc">
               <div class="card-body">
                 <h4 data-i18n="p10">Accessoire Automatisme</h4>
                 <p data-i18n="d10">Photocellules et capteurs de sécurité pour une protection optimale.</p>
@@ -495,7 +513,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400" class="card-img" alt="Acc">
+              <img src="https://i.ibb.co/WvgKYGHB/480189302-2642614309462352-3059658988279874382-n.jpg" class="card-img" alt="Acc">
               <div class="card-body">
                 <h4 data-i18n="p11">Accessoire Automatisme</h4>
                 <p data-i18n="d11">Feux clignotants LED pour signalisation et sécurité des accès.</p>
@@ -504,7 +522,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=400" class="card-img" alt="Acc">
+              <img src="https://i.ibb.co/MDfmP9hZ/102854961-1367960863594376-3187273592316362752-n.jpg" class="card-img" alt="Acc">
               <div class="card-body">
                 <h4 data-i18n="p12">Accessoire Automatisme</h4>
                 <p data-i18n="d12">Télécommandes universelles et récepteurs longue portée.</p>
@@ -529,7 +547,7 @@
         <div class="slider" id="track3">
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1631641628174-884c7e63b399?q=80&w=400" class="card-img" alt="Bras">
+              <img src="https://i.ibb.co/5xSXVm4G/store-a-bras-invisible.jpg" class="card-img" alt="Bras">
               <div class="card-body">
                 <h4 data-i18n="p13">Tinda à bras articulé</h4>
                 <p data-i18n="d13">Store banne robuste à ouverture facile. Protection solaire efficace.</p>
@@ -538,7 +556,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=400" class="card-img" alt="Corbeille">
+              <img src="https://i.ibb.co/mrG7k4yZ/612-HYFa-D9j-L-AC-UF350-350-QL80.jpg" class="card-img" alt="Corbeille">
               <div class="card-body">
                 <h4 data-i18n="p14">Tinda Corbeille</h4>
                 <p data-i18n="d14">Charme rétro pour boutiques et hôtels. Personnalisable à souhait.</p>
@@ -547,7 +565,7 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=400" class="card-img" alt="Monobloc">
+              <img src="https://i.ibb.co/q3kb9xKH/161697553-3706594626114749-5599614570877447756-n.jpg" class="card-img" alt="Monobloc">
               <div class="card-body">
                 <h4 data-i18n="p15">Tinda Monobloc</h4>
                 <p data-i18n="d15">Couverture de grandes terrasses. Structure compacte et résistante.</p>
@@ -556,16 +574,16 @@
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=400" class="card-img" alt="Pergola">
+              <img src="https://i.ibb.co/5X2sGPfW/71e-C-p-YGfn-L-AC-SX569.jpg" class="card-img" alt="Pergola">
               <div class="card-body">
-                <h4 data-i18n="p16">Pergola</h4>
+                <h4 data-i18n="p16">Tinda Pergola</h4>
                 <p data-i18n="d16">Extension de vie extérieure. Structure fixe élégante et durable.</p>
               </div>
             </div>
           </a>
           <a href="#devis" class="card-link">
             <div class="card">
-              <img src="https://images.unsplash.com/photo-1596236561296-6b74681323cd?q=80&w=400" class="card-img" alt="Balcon">
+              <img src="https://i.ibb.co/yx7VqQR/161771016-3706594562781422-8174312427778293149-n.jpg" class="card-img" alt="Balcon">
               <div class="card-body">
                 <h4 data-i18n="p17">Tinda Balcon</h4>
                 <p data-i18n="d17">Store vertical pour balcons et loggias. Intimité et ombre garanties.</p>
@@ -580,7 +598,7 @@
   </div>
 </section>
 
-<!-- DEVIS (Ajout Champ "Service") -->
+<!-- DEVIS (Web3Forms Intégré) -->
 <section id="devis" class="quote-section">
   <div class="quote-container">
     <div style="text-align: center; margin-bottom: 2rem;">
@@ -588,8 +606,10 @@
       <p data-i18n="formSub">Recevez une estimation rapide.</p>
     </div>
     
+    <!-- Formulaire Web3Forms -->
     <form action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="YOUR_KEY">
+      <!-- Clé API à remplacer -->
+      <input type="hidden" name="access_key" value="8e50db27-b56a-43cd-93f2-04dccc8204d8">
       
       <div class="form-grid">
         <div class="form-group">
@@ -607,7 +627,7 @@
         <input type="text" name="adresse" class="form-control">
       </div>
 
-      <!-- NOUVEAU: CHOIX DU SERVICE -->
+      <!-- CHOIX DU SERVICE -->
       <div class="form-group">
         <label data-i18n="lblSujet">Type de Service</label>
         <select name="service" class="form-control">
@@ -639,7 +659,7 @@
   <div class="container contact-grid">
     <div class="contact-text">
       <h2 data-i18n="contactTitle">Nos Coordonnées</h2>
-      <p data-i18n="contactText">Notre siège est à Bouira, nous intervenons partout.</p>
+      <p data-i18n="contactText">Notre siège est à Hydra, nous intervenons partout.</p>
       
       <!-- Icone SVG MAP -->
       <div class="info-row">
@@ -647,8 +667,8 @@
           <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
         </div>
         <div>
-          <strong style="display:block;">El Adjiba</strong>
-          <span style="opacity:0.8;">Bouira, Algérie</span>
+          <strong style="display:block;">Hydra</strong>
+          <span style="opacity:0.8;">Hydra, Algérie</span>
         </div>
       </div>
       
@@ -658,7 +678,7 @@
           <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
         </div>
         <div>
-          <strong style="display:block;">+213 796 096 433</strong>
+          <strong style="display:block;">+213 540 512 375</strong>
           <span style="opacity:0.8;">Service Client</span>
         </div>
       </div>
@@ -669,7 +689,7 @@
           <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </div>
         <div>
-          <strong style="display:block;">contact@malek-auto.com</strong>
+          <strong style="display:block;">Novacces16@gmail.com</strong>
           <span style="opacity:0.8;">Réponse sous 24h</span>
         </div>
       </div>
@@ -688,7 +708,7 @@
     
     <div class="footer-grid">
       <div class="footer-col">
-        <h4 style="color:var(--primary);">MALEK AUTOMATISME</h4>
+        <h4 style="color:var(--primary);">Novacces.com</h4>
         <p data-i18n="footerDesc">Depuis 2016, nous sommes leaders en Algérie pour la pose de rideaux métalliques, portails électriques et systèmes de sécurité.</p>
       </div>
       
