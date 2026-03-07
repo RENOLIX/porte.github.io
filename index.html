@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="metaTitle">Novacces | Rideaux & Portails Électriques</title>
-  <link rel="icon" type="image/png" sizes="48x48" href="https://i.ibb.co/996YLhKh/novacces-com-2.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/996YLhKh/novacces-com-2.png">
+  
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="https://i.ibb.co/996YLhKh/novacces-com-2.png">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/996YLhKh/novacces-com-2.png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,16 +72,15 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(255,255,255,0.95);
       border-bottom: 1px solid var(--border);
-      padding: 0.5rem 0; /* Un peu moins de padding pour laisser place au grand logo */
+      padding: 0.5rem 0; 
       backdrop-filter: blur(8px);
-      height: 80px; /* Hauteur augmentée pour le logo */
+      height: 80px; 
       display: flex; align-items: center;
     }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
     
-    /* MODIFICATION LOGO IMAGE */
     .logo img { 
-        height: 135px; /* Taille augmentée */
+        height: 135px; 
         width: auto; 
         display: block; 
     }
@@ -99,7 +100,6 @@
     .hero-img { position: relative; }
     .hero-img img { width: 100%; border-radius: var(--radius); box-shadow: 20px 20px 0 var(--bg-light); }
     
-    /* Overlay Hero Mobile Uniquement */
     .hero-mobile-overlay { display: none; }
 
     /* QUI SOMMES NOUS */
@@ -129,7 +129,7 @@
     }
     .slider::-webkit-scrollbar { display: none; }
 
-    /* CARTE PRODUIT (Modifié pour Vertical) */
+    /* CARTE PRODUIT */
     .card {
       min-width: 260px; max-width: 260px;
       background: white; border: 1px solid var(--border);
@@ -142,9 +142,8 @@
 
     .card:hover { border-color: var(--primary); box-shadow: 0 10px 20px rgba(249, 115, 22, 0.15); transform: translateY(-5px); }
     
-    /* MODIFICATION ICI: Hauteur augmentée pour le format vertical */
     .card-img { 
-      height: 320px; /* Augmenté de 180px à 320px pour format vertical */
+      height: 320px; 
       object-fit: cover; 
       background: #eee; 
     }
@@ -184,14 +183,14 @@
     }
     .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1); }
 
-    /* VAGUE de séparation */
+    /* VAGUE */
     .wave-divider {
       display: block; width: 100%; height: 60px;
       fill: var(--bg-orange-soft);
       margin-bottom: -1px;
     }
 
-    /* CONTACT */
+    /* CONTACT & MAP */
     .contact-section { 
       padding: 2rem 0 4rem; 
       background: var(--bg-orange-soft); 
@@ -207,7 +206,15 @@
       border-radius: 50%; display: flex; align-items: center; justify-content: center; 
       color: var(--primary); box-shadow: 0 2px 10px rgba(0,0,0,0.05); flex-shrink: 0;
     }
-    .map { width: 100%; height: 400px; border-radius: var(--radius); border: 2px solid white; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    
+    /* ICI LE CSS DE LA CARTE */
+    .map { 
+      width: 100%; 
+      height: 400px; 
+      border-radius: var(--radius); 
+      border: 2px solid white; 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+    }
 
     /* FOOTER */
     footer { 
@@ -216,7 +223,6 @@
       padding: 3rem 0; 
       font-size: 0.95rem; 
     }
-    /* Ligne blanche épaisse */
     .footer-divider {
       max-width: 1200px; margin: 0 auto 3rem; 
       border-top: 3px solid white; 
@@ -227,10 +233,10 @@
     .footer-col ul { display: flex; flex-direction: column; gap: 0.8rem; }
     .footer-col a:hover { color: var(--primary); padding-left: 5px; }
 
-    /* Burger & Mobile Menu Overlay */
+    /* Burger & Mobile */
     .burger { display: none; background: none; border: none; cursor: pointer; color: var(--text-dark); }
     .mobile-menu-overlay {
-      position: fixed; top: 80px; /* Ajusté à la nouvelle hauteur du header */
+      position: fixed; top: 80px;
       left: 0; right: 0; background: white;
       border-bottom: 1px solid var(--border); padding: 1rem;
       display: none; flex-direction: column; gap: 1rem;
@@ -255,22 +261,17 @@
       .nav-arrow { display: none; } 
       .cat-header { flex-direction: column; align-items: flex-start; gap: 5px; }
       .about-img img { max-width: 100%; }
-      .logo img { height: 50px; } /* Un peu plus petit sur mobile mais toujours visible */
-      .navbar { height: 70px; } /* Header un peu moins haut sur mobile */
+      .logo img { height: 50px; } 
+      .navbar { height: 70px; } 
       .mobile-menu-overlay { top: 70px; }
 
-      /* Mobile Navbar */
       .nav-menu { display: none; }
       .burger { display: block; }
       .btn-quote-header { display: none; }
 
-      /* HERO MOBILE SPECIFIC */
       .hero { padding: 0; text-align: left; }
-      
-      /* IMPORTANT: On cache explicitement le contenu PC sur mobile */
       .hero-content, .hero-img { display: none; }
       
-      /* On affiche le contenu Mobile */
       .hero-mobile-container {
         position: relative;
         width: 100%;
@@ -283,10 +284,9 @@
         filter: brightness(0.6);
       }
       
-      /* Texte remonté sur Mobile (bottom passé de 2rem à 40%) */
       .hero-mobile-text {
         position: absolute;
-        top: 45%; left: 50%; transform: translate(-50%, -50%); /* Centré et remonté */
+        top: 45%; left: 50%; transform: translate(-50%, -50%);
         width: 90%;
         color: white; z-index: 10;
         text-align: center;
@@ -308,12 +308,10 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="container nav-inner">
-    <!-- LOGO IMAGE (Remplace le texte) -->
     <a href="#" class="logo">
-      <img src="https://i.ibb.co/rRWC2NPb/novacces-com.png" alt="Logo Malek Auto">
+      <img src="https://i.ibb.co/rRWC2NPb/novacces-com.png" alt="Logo Novacces">
     </a>
     
-    <!-- Desktop Menu -->
     <div class="nav-menu">
       <a href="#catalogue" data-i18n="navCat">Catalogue</a>
       <a href="about.html" data-i18n="navAbout">Entreprise</a>
@@ -342,7 +340,7 @@
   <a href="#devis" onclick="toggleMenu()" style="color:var(--primary);" data-i18n="btnQuote">Devis Gratuit</a>
 </div>
 
-<!-- HERO DESKTOP (Normal) -->
+<!-- HERO DESKTOP -->
 <section class="hero hero-desktop">
   <div class="container hero-grid">
     <div class="hero-content">
@@ -357,13 +355,12 @@
         <a href="#contact" class="btn btn-outline" data-i18n="btnContact">Nous Trouver</a>
       </div>
     </div>
-    <!-- Desktop Hero Image -->
     <div class="hero-img">
       <img src="https://i.ibb.co/xq74XHDZ/portail-zig-zag-acier-contemporain-1-31-jpg-7.jpg" alt="Portail">
     </div>
   </div>
   
-  <!-- HERO MOBILE (Texte REMONTÉ) -->
+  <!-- HERO MOBILE -->
   <div class="hero-mobile-container">
     <img src="https://i.ibb.co/xq74XHDZ/portail-zig-zag-acier-contemporain-1-31-jpg-7.jpg" class="hero-mobile-bg" alt="Portail Mobile">
     <div class="hero-mobile-text">
@@ -392,11 +389,11 @@
   </div>
 </section>
 
-<!-- CATALOGUE (Produits avec + de texte) -->
+<!-- CATALOGUE -->
 <section id="catalogue" class="catalog-section">
   <div class="container">
     
-    <!-- Catégorie 1: Portails & Rideaux -->
+    <!-- Catégorie 1 -->
     <div class="cat-block">
       <div class="cat-header">
         <div class="cat-title">
@@ -457,7 +454,7 @@
       </div>
     </div>
 
-    <!-- Catégorie 2: Accessoires -->
+    <!-- Catégorie 2 -->
     <div class="cat-block">
       <div class="cat-header">
         <div class="cat-title">
@@ -473,7 +470,7 @@
               <img src="https://i.ibb.co/Xxp3zYD8/butee-de-portail-a-visser-pour-portail-a-deux-battants-Sp-Lm-U.jpg" class="card-img" alt="Acc">
               <div class="card-body">
                 <h4 data-i18n="p6">Butée de portail à visser</h4>
-                <p data-i18n="d6">Accessoire à visser pour portails à deux battants en tôle galvanisée d’épaisseur 2,5 mm.</p>
+                <p data-i18n="d6">Accessoire à visser pour portails à deux battants en tôle galvanisée.</p>
               </div>
             </div>
           </a>
@@ -536,7 +533,7 @@
       </div>
     </div>
 
-    <!-- Catégorie 3: Tinda -->
+    <!-- Catégorie 3 -->
     <div class="cat-block">
       <div class="cat-header">
         <div class="cat-title">
@@ -600,7 +597,7 @@
   </div>
 </section>
 
-<!-- DEVIS (Web3Forms Intégré) -->
+<!-- DEVIS -->
 <section id="devis" class="quote-section">
   <div class="quote-container">
     <div style="text-align: center; margin-bottom: 2rem;">
@@ -608,9 +605,7 @@
       <p data-i18n="formSub">Recevez une estimation rapide.</p>
     </div>
     
-    <!-- Formulaire Web3Forms -->
     <form action="https://api.web3forms.com/submit" method="POST">
-      <!-- Clé API à remplacer -->
       <input type="hidden" name="access_key" value="8e50db27-b56a-43cd-93f2-04dccc8204d8">
       
       <div class="form-grid">
@@ -629,7 +624,6 @@
         <input type="text" name="adresse" class="form-control">
       </div>
 
-      <!-- CHOIX DU SERVICE -->
       <div class="form-group">
         <label data-i18n="lblSujet">Type de Service</label>
         <select name="service" class="form-control">
@@ -651,7 +645,7 @@
   </div>
 </section>
 
-<!-- VAGUE DE SÉPARATION (Sans ligne blanche) -->
+<!-- VAGUE -->
 <svg class="wave-divider" viewBox="0 0 1440 320" preserveAspectRatio="none">
   <path fill-opacity="1" d="M0,160L80,149.3C160,139,320,117,480,128C640,139,800,181,960,192C1120,203,1280,181,1360,170.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
 </svg>
@@ -663,7 +657,6 @@
       <h2 data-i18n="contactTitle">Nos Coordonnées</h2>
       <p data-i18n="contactText">Notre siège est à Hydra, nous intervenons partout.</p>
       
-      <!-- Icone SVG MAP -->
       <div class="info-row">
         <div class="info-icon-box">
           <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -674,7 +667,6 @@
         </div>
       </div>
       
-      <!-- Icone SVG PHONE -->
       <div class="info-row">
         <div class="info-icon-box">
           <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -685,7 +677,6 @@
         </div>
       </div>
       
-      <!-- Icone SVG MAIL -->
       <div class="info-row">
         <div class="info-icon-box">
           <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -698,7 +689,8 @@
     </div>
     
     <div>
-       <iframe title="Carte Hydra" src="https://www.google.com/maps?q=Hydra,+Algiers,+Algeria&output=embed" loading="lazy"></iframe>
+       <!-- CARTE MODIFIÉE ICI -->
+       <iframe class="map" title="Carte Hydra" src="https://www.google.com/maps?q=Hydra,+Algiers,+Algeria&output=embed" loading="lazy" width="100%" height="400" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     </div>
   </div>
 </section>
@@ -765,13 +757,13 @@
   // LANGUE
   const translations = {
     fr: {
-      metaTitle: "Malek Automatisme | Rideaux & Portails",
+      metaTitle: "Novacces | Rideaux & Portails",
       btnQuote: "Devis Gratuit",
       badge1: "Depuis 2016", badge2: "Intervention Rapide",
       heroTitle: "Expert Rideaux Métalliques<br>& Portails Électriques",
       heroDesc: "Installation professionnelle et réparation pour particuliers et industriels.",
       btnCat: "Nos Produits", btnContact: "Nous Trouver",
-      aboutTitle: "Qui sommes-nous ?", aboutText: "Fondée en 2016, Malek Automatisme est votre partenaire de confiance pour la sécurisation de vos accès. Nous combinons savoir-faire artisanal et technologie moderne.",
+      aboutTitle: "Qui sommes-nous ?", aboutText: "Fondée en 2016, Novacces est votre partenaire de confiance pour la sécurisation de vos accès. Nous combinons savoir-faire artisanal et technologie moderne.",
       check1: "Équipe qualifiée", check2: "Dépannage Urgence", check3: "Garantie matériel",
       cat1Sub: "Fermetures", cat1Title: "Portails & Rideaux",
       p1:"Rideau Rapide", d1:"Idéal pour les zones industrielles à fort trafic. Ouverture ultra-rapide et robuste.",
@@ -780,7 +772,7 @@
       p4:"Portail Coulissant", d4:"Solution gain de place par excellence. Parfait pour les terrains en pente.",
       p5:"Porte Sectionnelle", d5:"Isolation thermique et sécurité pour votre garage. Design moderne et silencieux.",
       cat2Sub: "Automatisme", cat2Title: "Accessoires & Barrières",
-      p6:"Accessoire Automatisme", d6:"Large gamme de pièces de rechange et composants pour tous vos systèmes.",
+      p6:"Butée de portail", d6:"Accessoire à visser pour portails à deux battants en tôle galvanisée d’épaisseur 2,5 mm.",
       p7:"Accessoire Automatisme", d7:"Moteurs puissants et durables pour portails lourds et usage intensif.",
       p8:"Barrière Levante", d8:"Contrôle d'accès efficace pour parkings et résidences privées.",
       p9:"Barrière Motorline", d9:"La référence professionnelle en matière de barrières automatiques rapides.",
@@ -791,24 +783,24 @@
       p13:"Tinda à bras articulé", d13:"Store banne robuste à ouverture facile. Protection solaire efficace.",
       p14:"Tinda Corbeille", d14:"Charme rétro pour boutiques et hôtels. Personnalisable à souhait.",
       p15:"Tinda Monobloc", d15:"Couverture de grandes terrasses. Structure compacte et résistante.",
-      p16:"Pergola", d16:"Extension de vie extérieure. Structure fixe élégante et durable.",
+      p16:"Tinda Pergola", d16:"Extension de vie extérieure. Structure fixe élégante et durable.",
       p17:"Tinda Balcon", d17:"Store vertical pour balcons et loggias. Intimité et ombre garanties.",
       formTitle: "Demander un Devis Gratuit", formSub: "Recevez une estimation rapide.",
       lblNom: "Nom", lblTel: "Téléphone", lblAddr: "Adresse", 
       lblSujet: "Type de Service", opt1:"Portails & Rideaux Métalliques", opt2:"Tinda & Pergola", opt3:"Accessoires & Barrières", opt4:"Dépannage / Maintenance", opt5:"Autre demande",
       lblMsg: "Votre besoin", btnSend: "Envoyer",
-      contactTitle: "Nos Coordonnées", contactText: "Notre siège est à Bouira, nous intervenons partout.",
+      contactTitle: "Nos Coordonnées", contactText: "Notre siège est à Hydra, nous intervenons partout.",
       footerDesc: "Depuis 2016, nous sommes leaders en Algérie pour la pose de rideaux métalliques, portails électriques et systèmes de sécurité.", 
       ftLinks: "Navigation", ftLegal: "Horaires", navCat: "Produits Phares", navAbout:"Entreprise", navContact:"Contact"
     },
     ar: {
-      metaTitle: "مالك أوتوماتيزم | ستائر وبوابات",
+      metaTitle: "نوفاكس | ستائر وبوابات",
       btnQuote: "طلب عرض سعر",
       badge1: "منذ 2016", badge2: "تدخل سريع",
       heroTitle: "خبير الستائر المعدنية<br>والبوابات الكهربائية",
       heroDesc: "تركيب احترافي وإصلاح للأفراد والشركات.",
       btnCat: "منتجاتنا", btnContact: "موقعنا",
-      aboutTitle: "من نحن؟", aboutText: "تأسست عام 2016، مالك أوتوماتيزم هي شريكك الموثوق لتأمين مداخلك. نجمع بين الحرفية والتكنولوجيا الحديثة.",
+      aboutTitle: "من نحن؟", aboutText: "تأسست عام 2016، نوفاكس هي شريكك الموثوق لتأمين مداخلك. نجمع بين الحرفية والتكنولوجيا الحديثة.",
       check1: "فريق مؤهل", check2: "إصلاح طارئ", check3: "ضمان المعدات",
       cat1Sub: "إغلاقات", cat1Title: "بوابات وستائر",
       p1:"ستار سريع", d1:"مثالي للمناطق الصناعية ذات الحركة الكثيفة. فتح سريع وقوي.",
@@ -817,7 +809,7 @@
       p4:"بوابة منزلقة", d4:"الحل الأمثل لتوفير المساحة. مثالي للأراضي المنحدرة.",
       p5:"باب مقطعي", d5:"عزل حراري وأمان للمرآب الخاص بك. تصميم حديث وصامت.",
       cat2Sub: "تشغيل آلي", cat2Title: "إكسسوارات وحواجز",
-      p6:"إكسسوار تشغيل آلي", d6:"مجموعة واسعة من قطع الغيار والمكونات لجميع أنظمتك.",
+      p6:"مصد البوابة", d6:"إكسسوار للتركيب على البوابات ذات الضلفتين من الصفيح المجلفن بسمك 2.5 مم.",
       p7:"إكسسوار تشغيل آلي", d7:"محركات قوية ومتينة للبوابات الثقيلة والاستخدام المكثف.",
       p8:"حاجز رافع", d8:"تحكم فعال في الوصول لمواقف السيارات والمساكن الخاصة.",
       p9:"حاجز Motorline", d9:"المرجع المهني في مجال الحواجز الأوتوماتيكية السريعة.",
@@ -828,13 +820,13 @@
       p13:"تيندا ذراع مفصلي", d13:"مظلة قوية سهلة الفتح. حماية شمسية فعالة.",
       p14:"تيندا سلة", d14:"سحر كلاسيكي للمحلات والفنادق. قابل للتخصيص حسب الرغبة.",
       p15:"تيندا مونو بلوك", d15:"تغطية التراسات الكبيرة. هيكل مدمج ومقاوم.",
-      p16:"بيرغولا", d16:"تمديد للحياة الخارجية. هيكل ثابت أنيق ومتين.",
+      p16:"تيندا بيرغولا", d16:"تمديد للحياة الخارجية. هيكل ثابت أنيق ومتين.",
       p17:"تيندا شرفة", d17:"ستار عمودي للشرفات والمقطع. خصوصية وظل مضمونان.",
       formTitle: "طلب عرض سعر مجاني", formSub: "احصل على تقدير سريع.",
       lblNom: "الاسم", lblTel: "الهاتف", lblAddr: "العنوان",
       lblSujet: "نوع الخدمة", opt1:"بوابات وستائر معدنية", opt2:"تيندا وبيرغولا", opt3:"إكسسوارات وحواجز", opt4:"إصلاح / صيانة", opt5:"طلب آخر",
       lblMsg: "احتياجك", btnSend: "إرسال",
-      contactTitle: "بيانات الاتصال", contactText: "مقرنا في البويرة، وننقل إلى كل مكان.",
+      contactTitle: "بيانات الاتصال", contactText: "مقرنا في حيدرة، وننقل إلى كل مكان.",
       footerDesc: "منذ 2016، نحن رواد في الجزائر في تركيب الستائر المعدنية، البوابات الكهربائية وأنظمة الأمان.", 
       ftLinks: "تصفح", ftLegal: "مواقيت", navCat: "منتجات مميزة", navAbout:"الشركة", navContact:"اتصال"
     }
