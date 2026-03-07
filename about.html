@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="metaTitle">Qui Sommes-Nous | Malek Automatisme</title>
+  <title data-i18n="metaTitle">Qui Sommes-Nous | Novacces</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,17 +52,25 @@
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* HEADER (Identique) */
+    /* HEADER */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(255,255,255,0.98);
+      background: rgba(255,255,255,0.95);
       border-bottom: 1px solid var(--border);
-      height: 70px; display: flex; align-items: center;
-      backdrop-filter: blur(10px);
+      padding: 0.5rem 0;
+      backdrop-filter: blur(8px);
+      height: 80px; /* Hauteur augmentée pour le logo */
+      display: flex; align-items: center;
     }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-    .logo { font-size: 1.4rem; font-weight: 900; color: var(--text-dark); text-transform: uppercase; }
-    .logo span { color: var(--primary); }
+    
+    /* MODIFICATION LOGO IMAGE */
+    .logo img { 
+        height: 135px; /* Image plus grande */
+        width: auto; 
+        display: block; 
+    }
+
     .nav-menu { display: flex; gap: 2rem; }
     .nav-menu a { font-weight: 600; font-size: 0.95rem; }
     .nav-menu a:hover { color: var(--primary); }
@@ -154,7 +162,7 @@
 
     /* RESPONSIVE */
     .burger { display: none; background: none; border: none; cursor: pointer; }
-    .mobile-menu-overlay { display: none; position: fixed; top: 70px; left: 0; right: 0; background: white; padding: 1rem; flex-direction: column; gap: 1rem; border-bottom: 1px solid var(--border); }
+    .mobile-menu-overlay { display: none; position: fixed; top: 80px; left: 0; right: 0; background: white; padding: 1rem; flex-direction: column; gap: 1rem; border-bottom: 1px solid var(--border); }
     .mobile-menu-overlay.open { display: flex; }
 
     @media (max-width: 900px) {
@@ -164,6 +172,9 @@
       .story-badge { right: 0; bottom: -10px; padding: 1rem; }
       .text-block { padding: 1.5rem; top: 0; margin-top: 2rem; }
       .story-section { padding: 3rem 0 0; }
+      .navbar { height: 70px; }
+      .logo img { height: 50px; }
+      .mobile-menu-overlay { top: 70px; }
     }
   </style>
 </head>
@@ -172,7 +183,10 @@
 <!-- NAVBAR (Identique) -->
 <nav class="navbar">
   <div class="container nav-inner">
-    <a href="index.html" class="logo">MALEK<span>AUTO</span></a>
+    <!-- LOGO IMAGE (Remplace le texte) -->
+    <a href="index.html" class="logo">
+      <img src="https://i.ibb.co/rRWC2NPb/novacces-com.png" alt="Logo Novacces">
+    </a>
     
     <div class="nav-menu">
       <a href="index.html#catalogue" data-i18n="navCat">Catalogue</a>
@@ -196,15 +210,15 @@
 <!-- MENU MOBILE -->
 <div class="mobile-menu-overlay" id="mobileMenu">
   <a href="index.html#catalogue" data-i18n="navCat">Catalogue</a>
-  <a href="#" style="color:var(--primary);" data-i18n="navAbout">Entreprise</a>
-  <a href="index.html#contact" data-i18n="navContact">Contact</a>
+  <a href="about.html" style="color:var(--primary);" data-i18n="navAbout">Entreprise</a>
+  <a href="contact.html" data-i18n="navContact">Contact</a>
   <a href="index.html#devis" data-i18n="btnQuote">Devis Gratuit</a>
 </div>
 
 <!-- HEADER DE PAGE -->
 <section class="page-header">
   <div class="container">
-    <div class="breadcrumb">Malek Automatisme</div>
+    <div class="breadcrumb">Novacces</div>
     <h1 data-i18n="pgTitle">Notre Histoire & Expertise</h1>
     <p style="max-width:600px; margin:0 auto;" data-i18n="pgSub">Plus qu'une entreprise, un partenaire de confiance pour votre sécurité depuis 2016.</p>
   </div>
@@ -215,7 +229,7 @@
   <div class="container story-grid">
     <div class="story-img">
       <!-- Image d'équipe ou d'atelier -->
-      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop" alt="Atelier Malek Auto">
+      <img src="https://i.ibb.co/JRtwtDs5/novacces-com-1.png" alt="Atelier Novacces">
       <div class="story-badge">
         <span data-i18n="statYears">8+</span>
         <small data-i18n="statLabel">Années d'expérience</small>
@@ -223,7 +237,7 @@
     </div>
     <div class="story-content">
       <h2 data-i18n="storyTitle">L'excellence au service de l'industrie et de l'habitat</h2>
-      <p data-i18n="storyP1">Fondée en 2016 dans la région de Bouira (El Adjiba), <strong>Malek Automatisme</strong> est née d'une volonté simple : apporter des solutions de fermeture robustes, modernes et automatisées à un marché algérien en pleine expansion.</p>
+      <p data-i18n="storyP1">Fondée en 2016 dans la région de Hydra, <strong>Novacces</strong> est née d'une volonté simple : apporter des solutions de fermeture robustes, modernes et automatisées à un marché algérien en pleine expansion.</p>
       <p data-i18n="storyP2">Ce qui a commencé comme une petite structure artisanale est devenu aujourd'hui une référence régionale. Nous ne nous contentons pas d'installer des rideaux ou des portails ; nous analysons vos besoins spécifiques, que vous soyez un particulier cherchant à sécuriser sa villa ou un industriel nécessitant des accès logistiques rapides.</p>
       <p style="font-weight:700; color:var(--text-dark);" data-i18n="storyConclusion">Notre force réside dans notre capacité à maîtriser toute la chaîne : du conseil technique à la maintenance, en passant par une installation millimétrée.</p>
     </div>
@@ -235,7 +249,7 @@
   <div class="container">
     <div class="text-block">
       <h3 style="text-align:center; margin-bottom:2rem;" data-i18n="srvTitle">Une approche globale de votre sécurité</h3>
-      <p data-i18n="srvIntro">Chez Malek Automatisme, chaque projet est unique. Nous intervenons sur trois axes principaux pour garantir votre satisfaction totale :</p>
+      <p data-i18n="srvIntro">Chez Novacces, chaque projet est unique. Nous intervenons sur trois axes principaux pour garantir votre satisfaction totale :</p>
       
       <div class="feature-grid">
         <div class="feature-item">
@@ -300,7 +314,7 @@
     <div class="footer-divider"></div>
     <div class="footer-grid">
       <div class="footer-col">
-        <h4 style="color:var(--primary);">MALEK AUTOMATISME</h4>
+        <h4 style="color:var(--primary);">Novacces.com</h4>
         <p data-i18n="footerDesc">Depuis 2016, nous sommes leaders en Algérie pour la pose de rideaux métalliques, portails électriques et systèmes de sécurité.</p>
       </div>
       <div class="footer-col">
@@ -340,17 +354,17 @@
 
   const translations = {
     fr: {
-      metaTitle: "Qui Sommes-Nous | Malek Automatisme",
+      metaTitle: "Qui Sommes-Nous | Novacces",
       btnQuote: "Devis Gratuit",
       navCat: "Catalogue", navAbout: "Entreprise", navContact: "Contact",
       pgTitle: "Notre Histoire & Expertise", pgSub: "Plus qu'une entreprise, un partenaire de confiance pour votre sécurité depuis 2016.",
       statYears: "8+", statLabel: "Années d'expérience",
       storyTitle: "L'excellence au service de l'industrie et de l'habitat",
-      storyP1: "Fondée en 2016 dans la région de Bouira (El Adjiba), <strong>Malek Automatisme</strong> est née d'une volonté simple : apporter des solutions de fermeture robustes, modernes et automatisées à un marché algérien en pleine expansion.",
+      storyP1: "Fondée en 2016 dans la région de Bouira (El Adjiba), <strong>Novacces</strong> (anciennement Malek Automatisme) est née d'une volonté simple : apporter des solutions de fermeture robustes, modernes et automatisées à un marché algérien en pleine expansion.",
       storyP2: "Ce qui a commencé comme une petite structure artisanale est devenu aujourd'hui une référence régionale. Nous ne nous contentons pas d'installer des rideaux ou des portails ; nous analysons vos besoins spécifiques, que vous soyez un particulier cherchant à sécuriser sa villa ou un industriel nécessitant des accès logistiques rapides.",
       storyConclusion: "Notre force réside dans notre capacité à maîtriser toute la chaîne : du conseil technique à la maintenance, en passant par une installation millimétrée.",
       srvTitle: "Une approche globale de votre sécurité",
-      srvIntro: "Chez Malek Automatisme, chaque projet est unique. Nous intervenons sur trois axes principaux pour garantir votre satisfaction totale :",
+      srvIntro: "Chez Novacces, chaque projet est unique. Nous intervenons sur trois axes principaux pour garantir votre satisfaction totale :",
       f1Title: "Installation Certifiée", f1Desc: "Pose de rideaux métalliques, portails coulissants/battants et portes sectionnelles respectant les normes de sécurité.",
       f2Title: "Motorisation & Domotique", f2Desc: "Transformation de vos ouvertures manuelles en systèmes automatiques intelligents, contrôlables à distance.",
       f3Title: "Maintenance & SAV", f3Desc: "Une équipe réactive pour le dépannage de moteurs, le remplacement de lames ou la réparation de cartes.",
@@ -363,17 +377,17 @@
       ftLinks: "Navigation", ftLegal: "Horaires"
     },
     ar: {
-      metaTitle: "من نحن | مالك أوتوماتيزم",
+      metaTitle: "من نحن | نوفاكس",
       btnQuote: "طلب عرض سعر",
       navCat: "كتالوج", navAbout: "الشركة", navContact: "اتصال",
       pgTitle: "تاريخنا وخبرتنا", pgSub: "أكثر من مجرد شركة، شريك موثوق لأمانك منذ 2016.",
       statYears: "+8", statLabel: "سنوات خبرة",
       storyTitle: "التميز في خدمة الصناعة والسكن",
-      storyP1: "تأسست في عام 2016 في منطقة البويرة (العجيبة)، ولدت <strong>مالك أوتوماتيزم</strong> من إرادة بسيطة: توفير حلول إغلاق قوية وحديثة وآلية للسوق الجزائري المتنامي.",
+      storyP1: "تأسست في عام 2016 ، ولدت <strong>نوفاكس</strong> من إرادة بسيطة: توفير حلول إغلاق قوية وحديثة وآلية للسوق الجزائري المتنامي.",
       storyP2: "ما بدأ كورشة حرفية صغيرة أصبح اليوم مرجعًا إقليميًا. نحن لا نكتفي بتركيب الستائر أو البوابات؛ بل نحلل احتياجاتك الخاصة، سواء كنت فردًا يسعى لتأمين فيلته أو صناعيًا يحتاج إلى وصول لوجستي سريع.",
       storyConclusion: "تكمن قوتنا في قدرتنا على إتقان السلسلة بأكملها: من الاستشارة الفنية إلى الصيانة، مرورًا بالتركيب الدقيق.",
       srvTitle: "مقاربة شاملة لأمانك",
-      srvIntro: "في مالك أوتوماتيزم، كل مشروع فريد. نحن نتدخل في ثلاثة محاور رئيسية لضمان رضاك التام:",
+      srvIntro: "في نوفاكس، كل مشروع فريد. نحن نتدخل في ثلاثة محاور رئيسية لضمان رضاك التام:",
       f1Title: "تركيب معتمد", f1Desc: "تركيب الستائر المعدنية، البوابات المنزلقة/المفصلية والأبواب المقطعية وفق معايير السلامة.",
       f2Title: "محركات وتشغيل آلي", f2Desc: "تحويل فتحاتك اليدوية إلى أنظمة أوتوماتيكية ذكية يمكن التحكم فيها عن بعد.",
       f3Title: "الصيانة وخدمة ما بعد البيع", f3Desc: "فريق سريع الاستجابة لإصلاح المحركات، استبدال الشرائح أو إصلاح البطاقات الإلكترونية.",
